@@ -6,14 +6,17 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import Home from './pages/Home.jsx';
 import AddJob from './pages/AddJob.jsx';
 import About from './pages/About.jsx';
+import Dashboard from './pages/Admin/Dashboard.jsx';
+
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route path="/" element={<Home />}/>
-      <Route path="/about" element={<About />}/>
-      <Route path="/add" element={<AddJob />}/>
+      <Route index={true} element={<Home />}/>
+      <Route path="about" element={<About />}/>
+      <Route path="add" element={<AddJob />}/>
+      <Route path='dashboard' element={<Dashboard />}/>
     </Route>
   )
 );
