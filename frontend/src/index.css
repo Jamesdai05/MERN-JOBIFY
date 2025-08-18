@@ -25,6 +25,19 @@ html {
   --primary-800: #0a6c74;
   --primary-900: #044e54;
 
+  /* secondary*/
+  --secodary-50: #ebf8ff;
+  --secodary-100: #bee3f8;
+  --secodary-200: #90cdf4;
+  --secodary-300: #63b3ed;
+  --secodary-400: #4299e1;
+  --secodary-500: #3182ce;
+  --secodary-600: #2b6cb0;
+  --secodary-700: #2c5282;
+  --secodary-800: #2a4365;
+  --secodary-900: #1a365d;
+
+
   /* grey */
   --grey-50: #f8fafc;
   --grey-100: #f1f5f9;
