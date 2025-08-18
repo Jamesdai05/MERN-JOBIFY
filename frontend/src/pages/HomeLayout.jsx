@@ -1,6 +1,8 @@
 const HomeLayout = () => {
   return (
-    <div>HomeLayout</div>
-  )
+      <div>
+          <h2>HomeLayout</h2>t
+      </div>
+  );
 }
 export default HomeLayout

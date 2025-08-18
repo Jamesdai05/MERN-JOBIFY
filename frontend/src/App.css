@@ -1,1 +1,27 @@
+/* header */
+.nav {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
 
+.logo {
+    width:12rem;
+    height:8rem;
+    object-fit: cover;
+}
+
+
+.container {
+    width:100vw;
+    display: flex;
+    justify-content:space-between;
+    /* gap:1rem; */
+    align-items:center;
+    margin:0.5rem auto;
+}
+
+.main-img{
+    height:600px;
+    object-fit: contain;
+}
