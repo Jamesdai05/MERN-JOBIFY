@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Wrapper from "../components/wrapper/Registration.js";
+import Wrapper from "../components/wrapper/RegistrationAndLogin.js";
 Link
 
 const Register = () => {

@@ -17,11 +17,13 @@ const Wrapper=styled.main`
         max-width:1200px;
         align-items:space-between;
         justify-content:space-evenly;
-        border: 1px solid var(--primary-500);
+        border: 1px solid var(--primary-300);
+        /* border-top: 5px solid var(--primary--500); */
         padding:2.5rem;
         border-radius:10px;
-        background-color: var(--secondary-500);
+        background-color: var(--secondary-300);
         color: var(--primary-50);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 
         .form-control {
             display:flex;
@@ -64,7 +66,7 @@ const Wrapper=styled.main`
             border:none;
             border-radius:10px;
             color:var(--primary-50);
-            background-color: var(--secondary-300);
+            background-color: var(--secondary-500);
             margin-bottom:0.8rem;
         }
 
