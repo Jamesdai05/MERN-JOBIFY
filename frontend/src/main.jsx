@@ -22,18 +22,24 @@ import AllJobs from './pages/Admin/AllJobs.jsx';
 
 
 const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<App />}>
-      <Route index={true} element={<HomeLayout />} />
-      <Route path='/landing' element={<LandingPage/>}/>
-      <Route path="/about" element={<About />} />
-      <Route path="register" element={<Register />} />
-      <Route path="login" element={<Login />} />
-      <Route path="/add" element={<AddJob />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="*" element={<Error/>}/>
-    </Route>
-  )
+    createRoutesFromElements(
+        <Route path="/" element={<App />}>
+            <Route index={true} element={<HomeLayout />} />
+            <Route path="/landing" element={<LandingPage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="register" element={<Register />} />
+            <Route path="login" element={<Login />} />
+            <Route path="*" element={<Error />} />
+
+            <Route path="dashboard" element={<DashboardLayout />}>
+                <Route index element={<Dashboard />} />
+                <Route path="profile" element={<Profile />} />
+                <Route path="/all-jobs" element={<Jobs />} />
+                <Route path="/add" element={<AddJob />} />
+                <Route path="stats" element={<Stats />} />
+            </Route>
+        </Route>
+    )
 );
 
 
