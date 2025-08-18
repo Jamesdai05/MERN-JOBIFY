@@ -16,6 +16,7 @@ import Profile from './pages/Profile';
 import Register from './pages/Register';
 import Stats from './pages/Stats';
 import AllJobs from './pages/Admin/AllJobs.jsx';
+import DashboardLayout from './pages/Admin/DashboardLayout.jsx';
 
 
 
@@ -32,11 +33,11 @@ const router = createBrowserRouter(
             <Route path="*" element={<Error />} />
 
             <Route path="dashboard" element={<DashboardLayout />}>
-                <Route index element={<Dashboard />} />
+                <Route index element={<AddJob />} />
                 <Route path="profile" element={<Profile />} />
-                <Route path="/all-jobs" element={<Jobs />} />
-                <Route path="/add" element={<AddJob />} />
+                {/* <Route path="add" element={<AddJob />} /> */}
                 <Route path="stats" element={<Stats />} />
+                <Route path="all-jobs" element={<AllJobs/>}/>
             </Route>
         </Route>
     )
