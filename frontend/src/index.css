@@ -26,16 +26,16 @@ html {
   --primary-900: #044e54;
 
   /* secondary*/
-  --secodary-50: #ebf8ff;
-  --secodary-100: #bee3f8;
-  --secodary-200: #90cdf4;
-  --secodary-300: #63b3ed;
-  --secodary-400: #4299e1;
-  --secodary-500: #3182ce;
-  --secodary-600: #2b6cb0;
-  --secodary-700: #2c5282;
-  --secodary-800: #2a4365;
-  --secodary-900: #1a365d;
+  --secondary-50: #ebf8ff;
+  --secondary-100: #bee3f8;
+  --secondary-200: #90cdf4;
+  --secondary-300: #63b3ed;
+  --secondary-400: #4299e1;
+  --secondary-500: #3182ce;
+  --secondary-600: #2b6cb0;
+  --secondary-700: #2c5282;
+  --secondary-800: #2a4365;
+  --secondary-900: #1a365d;
 
   --ternary-600: #0066FF;
   /* grey */
