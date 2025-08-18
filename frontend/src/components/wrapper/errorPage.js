@@ -24,10 +24,15 @@ const Wrapper=styled.main`
         margin-bottom:1.5rem;
         color:var(--text-secondary-color);
     }
-    a {
-    color: var(--primary-500);
-    text-transform: capitalize;
-  }
+    .btn {
+        color: var(--primary-50);
+        text-transform: capitalize;
+        text-decoration:none;
+        font-weight:700;
+        background-color:var(--ternary-600);
+        padding:0.8em;
+        border-radius:5px;
+    }
 `
 
 export default Wrapper;
