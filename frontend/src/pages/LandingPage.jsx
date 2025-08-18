@@ -28,12 +28,14 @@ const LandingPage = () => {
                       mustache, intelligentsia dreamcatcher cold-pressed same
                       cred cloud bread tacos shaman.
                   </p>
-                  <Link to="/register" className="btn register">
-                      Register
-                  </Link>
-                  <Link to="/login" className="btn login">
-                      Login
-                  </Link>
+                  <div className="links">
+                      <Link to="/register" className="btn register">
+                          Register
+                      </Link>
+                      <Link to="/login" className="btn login">
+                          Login
+                      </Link>
+                  </div>
               </div>
               <img src={main} alt="job hunting" className="img main-img" />
           </div>
