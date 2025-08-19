@@ -1,15 +1,12 @@
 /* header */
-.nav {
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-}
-
 .logo {
-    width:12rem;
-    height:8rem;
+    width:10rem;
+    height:6rem;
     object-fit: cover;
 }
+
+
+/* main */
 
 
 .container {

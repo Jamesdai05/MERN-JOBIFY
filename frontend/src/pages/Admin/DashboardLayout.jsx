@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Wrapper from "../../components/wrapper/dashboard.js";
 import Sidebar from "../../components/Sidebar.jsx";
 import BigSidebar from "../../components/BigSidebar.jsx";
-
+import Navbar from "../../components/Navbar.jsx";
 
 
 
@@ -15,7 +15,7 @@ const DashboardLayout = () => {
                   <Sidebar />
                   <BigSidebar />
                   <div className="dashboard-page">
-                      Dashboard
+                      <Navbar />
                       <Outlet/>
                   </div>
               </main>

@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Navbar from "../../components/Navbar.jsx";
 import Sidebar from "../../components/Sidebar.jsx";
 import BigSidebar from "../../components/BigSidebar.jsx";
@@ -11,13 +10,7 @@ const Dashboard = () => {
   return (
     <Wrapper>
       <main className="dashboard">
-        <Sidebar />
-        <BigSidebar />
-        <div className="dashboard-page">
-          <Navbar />
-          Dashboard
-
-        </div>
+        dashboard
       </main>
     </Wrapper>
   );
