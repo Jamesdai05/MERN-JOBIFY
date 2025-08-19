@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar.jsx";
 import { useContext, useState,createContext } from "react";
 
 
+
 const DashboarContext=createContext()
 
 
@@ -40,8 +41,8 @@ const DashboardLayout = () => {
               <main className="dashboard">
                   <Sidebar />
                   <BigSidebar />
+                  <Navbar />
                   <div className="dashboard-page">
-                      <Navbar />
                       <Outlet/>
                   </div>
               </main>
@@ -50,5 +51,5 @@ const DashboardLayout = () => {
   );
 }
 
-export const useDashboardContext=()=>useContext(DashboarContext)
+export const useDashboardContext =()=> useContext(DashboarContext)
 export default DashboardLayout

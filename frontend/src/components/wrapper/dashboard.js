@@ -7,9 +7,10 @@ const Wrapper = styled.section`
     grid-template-columns: 1fr;
   }
   .dashboard-page {
-    width: 90vw;
+    /* width: 90vw; */
+    width:calc(100vw - 192px);
     margin: 0 auto;
-    padding: 1rem 0;
+    /* padding: 1rem 0; */
   }
   @media (min-width: 992px) {
     .dashboard {

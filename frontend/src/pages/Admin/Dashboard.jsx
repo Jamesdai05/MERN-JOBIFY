@@ -10,7 +10,7 @@ const Dashboard = () => {
   return (
     <Wrapper>
       <main className="dashboard">
-        dashboard
+        
       </main>
     </Wrapper>
   );

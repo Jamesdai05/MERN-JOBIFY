@@ -189,17 +189,25 @@ ul {
   font-weight: 600;
 }
 
-.container {
+/* .container {
   width: var(--fluid-width);
   max-width: var(--max-width);
   margin: 0 auto;
   border:1px solid red;
-}
+} */
 
 .logo-img{
   display: flex;
   width:100%;
   justify-content: center;
+}
+
+.link {
+  width:145px;
+  display: flex;
+  align-items: center;
+  gap:0.9rem;
+  /* justify-content: flex-start; */
 }
 
 @media (max-width:992px){
