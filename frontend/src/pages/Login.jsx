@@ -1,3 +1,4 @@
+import Logo2 from "../components/Logo2.jsx";
 import Wrapper from "../components/wrapper/RegistrationAndLogin.js";
 import { Link } from "react-router-dom";
 
@@ -5,6 +6,7 @@ const Login = () => {
   return (
         <Wrapper>
             <form action="/register" className="form">
+                <Logo2 />
                 <h3>Login</h3>
                 <div className="form-control">
                     <label htmlFor="email" className="form-label">

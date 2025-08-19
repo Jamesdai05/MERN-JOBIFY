@@ -21,7 +21,7 @@ const Wrapper=styled.main`
         /* border-top: 5px solid var(--primary--500); */
         padding:2.5rem;
         border-radius:10px;
-        background-color: var(--secondary-300);
+        background-color: var(--secondary-350);
         color: var(--primary-50);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 

@@ -30,6 +30,7 @@ html {
   --secondary-100: #bee3f8;
   --secondary-200: #90cdf4;
   --secondary-300: #63b3ed;
+  --secondary-350: #63d3ed;
   --secondary-400: #4299e1;
   --secondary-500: #3182ce;
   --secondary-600: #2b6cb0;
@@ -193,4 +194,10 @@ ul {
   max-width: var(--max-width);
   margin: 0 auto;
   border:1px solid red;
+}
+
+.logo-img{
+  display: flex;
+  width:100%;
+  justify-content: center;
 }
