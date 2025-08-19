@@ -17,6 +17,7 @@ import Register from './pages/Register';
 import Stats from './pages/Stats';
 import AllJobs from './pages/Admin/AllJobs.jsx';
 import DashboardLayout from './pages/Admin/DashboardLayout.jsx';
+import Admin from './pages/Admin/Admin.jsx';
 
 
 
@@ -26,8 +27,8 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<App />}>
             <Route index={true} element={<HomeLayout />} />
-            <Route path="/landing" element={<LandingPage />} />
-            <Route path="/about" element={<About />} />
+            <Route path="landing" element={<LandingPage />} />
+            <Route path="about" element={<About />} />
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
             <Route path="*" element={<Error />} />
@@ -35,9 +36,9 @@ const router = createBrowserRouter(
             <Route path="dashboard" element={<DashboardLayout />}>
                 <Route index element={<AddJob />} />
                 <Route path="profile" element={<Profile />} />
-                {/* <Route path="add" element={<AddJob />} /> */}
                 <Route path="stats" element={<Stats />} />
                 <Route path="all-jobs" element={<AllJobs/>}/>
+                <Route path="admin" element={<Admin />} />
             </Route>
         </Route>
     )
