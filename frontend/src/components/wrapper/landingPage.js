@@ -6,12 +6,12 @@ const Wrapper = styled.section `
     max-width: var(--max-width);
     margin: 0 auto;
     display:flex;
-    justify-content:space-between;
-    margin-bottom:1rem;
+    align-items:center;
+    margin-bottom:4rem;
   }
 
   .page{
-    min-height:calc(100vh -var (--nav-height));
+    min-height:calc(100vh - var (--nav-height));
     display: grid;
     align-items:center;
     /* margin-top:-1rem; */

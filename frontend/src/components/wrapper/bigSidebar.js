@@ -12,7 +12,7 @@ const Wrapper=styled.aside`
     display:flex;
     justify-content:center;
     align-items:center;
-    z-index:-1;
+    z-index:0;
     transition:var(--transition);
     visibility:hidden;
   }
