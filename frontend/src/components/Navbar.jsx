@@ -3,6 +3,7 @@ import Logo from "./Logo.jsx";
 import styled from "styled-components";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
+import { useDashboardContext } from "../pages/Admin/DashboardLayout.jsx";
 
 const Wrapper = styled.nav`
     height: var(--nav-height);
@@ -36,7 +37,7 @@ const Wrapper = styled.nav`
         @media (max-width: 768px) {
             position: absolute;
             top: 3rem;
-            right: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
+            right: ${({ $isOpen }) => ($isOpen ? "0" : "-100%")};
             flex-direction: column;
             width: 250px;
             padding: 0.5rem 1rem;
@@ -46,6 +47,9 @@ const Wrapper = styled.nav`
             gap: 0.5rem;
             li {
                 padding: 0.5em 1em;
+            }
+            .control{
+                display:hidden;
             }
         }
     }
@@ -64,11 +68,13 @@ const Hamburger = styled.div`
 
 
 const Navbar = () => {
-
     const[isOpen,setIsOpen]=useState(false)
 
+    const data=useDashboardContext();
+    console.log(data)
+
   return (
-      <Wrapper isOpen={isOpen}>
+      <Wrapper $isOpen={isOpen}>
           <Logo />
           <Hamburger onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? <FaTimes /> : <FaBars />}

@@ -4,7 +4,7 @@ const Logo = () => {
   const style={height:"6rem"}
 
   return (
-    <div>
+    <div className="logo-div">
         <img src={logo} alt="logo" className="logo"/>
     </div>
   )

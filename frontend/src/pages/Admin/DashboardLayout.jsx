@@ -3,13 +3,39 @@ import Wrapper from "../../components/wrapper/dashboard.js";
 import Sidebar from "../../components/Sidebar.jsx";
 import BigSidebar from "../../components/BigSidebar.jsx";
 import Navbar from "../../components/Navbar.jsx";
+import { useContext, useState,createContext } from "react";
 
+
+const DashboarContext=createContext()
 
 
 
 const DashboardLayout = () => {
+
+    const user={name:"Jonh Doe"}
+    const [showSidebar,setShowSidebar]=useState(false)
+    const [isDarkTheme,setIsDarkTheme]=useState(false)
+
+    const toggleTheme=()=>{
+        setIsDarkTheme(prev=>!prev)
+        console.log("Toggle Theme");
+    }
+
+    const toggleSidebar = () => setShowSidebar((prev) => !prev);
+
+    const logoutUser=()=>{
+
+    }
+
+
   return (
-      <div>
+      <DashboarContext.Provider value={{
+        user,
+        showSidebar,
+        isDarkTheme,
+        toggleSidebar,
+        toggleTheme,logoutUser}}
+        >
           <Wrapper>
               <main className="dashboard">
                   <Sidebar />
@@ -20,7 +46,9 @@ const DashboardLayout = () => {
                   </div>
               </main>
           </Wrapper>
-      </div>
+      </DashboarContext.Provider>
   );
 }
+
+export const useDashboardContext=()=>useContext(DashboarContext)
 export default DashboardLayout
