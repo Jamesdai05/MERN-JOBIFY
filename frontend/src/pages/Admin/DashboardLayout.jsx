@@ -30,20 +30,25 @@ const DashboardLayout = () => {
 
 
   return (
-      <DashboarContext.Provider value={{
-        user,
-        showSidebar,
-        isDarkTheme,
-        toggleSidebar,
-        toggleTheme,logoutUser}}
-        >
+      <DashboarContext.Provider
+          value={{
+              user,
+              showSidebar,
+              isDarkTheme,
+              toggleSidebar,
+              toggleTheme,
+              logoutUser,
+          }}
+      >
           <Wrapper>
               <main className="dashboard">
                   <Sidebar />
                   <BigSidebar />
-                  <Navbar />
-                  <div className="dashboard-page">
-                      <Outlet/>
+                  <div>
+                      <Navbar />
+                      <div className="dashboard-page">
+                          <Outlet />
+                      </div>
                   </div>
               </main>
           </Wrapper>

@@ -32,6 +32,9 @@ const Wrapper=styled.main`
         background-color:var(--ternary-600);
         padding:0.8em;
         border-radius:5px;
+        display:flex;
+        justify-content:center;
+        /* align-items:center; */
     }
 `
 

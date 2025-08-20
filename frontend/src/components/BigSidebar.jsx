@@ -12,7 +12,7 @@ const BigSidebar = () => {
                       <Logo />
                   </header>
                   <div className="nav-links">
-                      <Link to="/add-job">
+                      <Link to="/dashboard">
                           <li className="link">
                               <span>
                                   <FaWpforms className="icon" />{" "}
@@ -20,7 +20,7 @@ const BigSidebar = () => {
                               Add Job
                           </li>
                       </Link>
-                      <Link to="/all-jobs">
+                      <Link to="/dashboard/all-jobs">
                           <li className="link">
                               <span>
                                   <FaWpforms className="icon" />{" "}
@@ -28,7 +28,7 @@ const BigSidebar = () => {
                               All Jobs
                           </li>
                       </Link>
-                      <Link to="/stats">
+                      <Link to="/dashboard/stats">
                           <li className="link">
                               <span>
                                   <FaWpforms className="icon" />{" "}
@@ -36,7 +36,7 @@ const BigSidebar = () => {
                               Stats
                           </li>
                       </Link>
-                      <Link to="/profile">
+                      <Link to="/dashboard/profile">
                           <li className="link">
                               <FaWpforms className="icon" />{" "}
                               <span>Profile</span>
