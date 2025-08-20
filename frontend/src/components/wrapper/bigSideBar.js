@@ -27,7 +27,16 @@ const Wrapper=styled.div`
             gap:2rem;
             align-items:center;
             padding: 2.5rem;
-            font-size:1.5rem;
+            font-size:1.15rem;
+
+        }
+        .nav-link{
+            width:135px;
+            display:flex;
+            gap:1rem;
+            align-items:center;
+            padding:0 1rem;
+            text-transform:capitalize;
         }
         li{
             list-style-type:none;
@@ -35,7 +44,7 @@ const Wrapper=styled.div`
 
         a{
             text-decoration:none;
-            color: var(--text-color);
+            color:var (--text-secondary-color);
         }
     }
 
