@@ -14,7 +14,7 @@ const DashboarContext=createContext()
 const DashboardLayout = () => {
 
     const user={name:"Jonh Doe"}
-    const [showSidebar,setShowSidebar]=useState(true)
+    const [showSidebar,setShowSidebar]=useState(false)
     const [isDarkTheme,setIsDarkTheme]=useState(false)
 
     const toggleTheme=()=>{

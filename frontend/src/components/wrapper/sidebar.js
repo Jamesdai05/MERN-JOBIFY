@@ -43,6 +43,9 @@ const Wrapper=styled.aside`
       padding-top: 2rem;
       display: flex;
       flex-direction: column;
+      justify-content:center;
+      height:50%;
+      gap:1rem;
     }
     .nav-link {
       display: flex;
@@ -51,9 +54,13 @@ const Wrapper=styled.aside`
       padding: 1rem 0;
       text-transform: capitalize;
       transition: var(--transition);
+      font-size:1.5rem;
     }
     .nav-link:hover {
       color: var(--primary-500);
+    }
+    .logo{
+      display:block;
     }
     .icon {
       font-size: 1.5rem;
