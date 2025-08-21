@@ -71,7 +71,7 @@ import Wrapper from "./wrapper/navbar.js";
 
 
 
-const Navbar = () => {
+const Navbar = ({toggleTheme}) => {
     const {toggleSidebar}=useDashboardContext();
     // console.log(data)
 
@@ -111,7 +111,7 @@ const Navbar = () => {
                   <h4 className="logo-text">dashboard</h4>
               </div>
               <div className="btn-container">
-                  <ThemeToggle />
+                  <ThemeToggle onClick={toggleTheme}/>
                   <LogoutContainer />
               </div>
           </div>

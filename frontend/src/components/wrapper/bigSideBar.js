@@ -40,6 +40,7 @@ const Wrapper=styled.div`
             align-items:center;
             padding:0 1rem;
             text-transform:capitalize;
+            color:var(--secondary-500);
         }
         .nav-link:hover{
             scale:1.2;
@@ -52,7 +53,6 @@ const Wrapper=styled.div`
 
         a{
             text-decoration:none;
-            color:var (--text-secondary-color);
         }
     }
 
