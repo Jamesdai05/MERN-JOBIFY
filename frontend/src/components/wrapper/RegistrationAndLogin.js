@@ -58,6 +58,7 @@ const Wrapper=styled.main`
         flex-direction:column;
         justify-content:center;
         align-items:center;
+        width:100%;
 
         .btn{
             width:100%;
@@ -73,10 +74,10 @@ const Wrapper=styled.main`
         .btn:hover{
             cursor: pointer;
         }
-
         .link{
-            padding:0.5em;
-            font-size:1.2em;
+            padding:0.2em;
+            display:inline;
+            /* font-size:1.1em; */
             /* text-decoration:none; */
         }
 

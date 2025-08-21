@@ -5,9 +5,9 @@ import App from './App.jsx'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import AddJob from './pages/AddJob.jsx';
 import About from './pages/About.jsx';
-import Dashboard from './pages/Admin/Dashboard.jsx';
-import DeleteJob from './pages/Admin/DeleteJob';
-import EditJob from './pages/Admin/EditJob.jsx';
+// import Dashboard from './pages/Admin/Dashboard.jsx';
+// import DeleteJob from './pages/Admin/DeleteJob';
+// import EditJob from './pages/Admin/EditJob.jsx';
 import HomeLayout from './pages/HomeLayout';
 import Error from './pages/Error';
 import LandingPage from './pages/LandingPage';
@@ -19,9 +19,13 @@ import AllJobs from './pages/Admin/AllJobs.jsx';
 import DashboardLayout from './pages/Admin/DashboardLayout.jsx';
 import Admin from './pages/Admin/Admin.jsx';
 
+export const checkDefaultTheme = () => {
+    const isDarkTheme = localStorage.getItem("darkTheme") === "true";
+    document.body.classList.toggle("dark-theme", isDarkTheme);
+    return isDarkTheme;
+};
 
-
-
+checkDefaultTheme()
 
 const router = createBrowserRouter(
     createRoutesFromElements(

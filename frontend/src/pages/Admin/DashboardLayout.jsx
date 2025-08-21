@@ -4,64 +4,59 @@ import Sidebar from "../../components/Sidebar.jsx";
 import BigSidebar from "../../components/BigSidebar.jsx";
 import Navbar from "../../components/Navbar.jsx";
 import { useContext, useState,createContext } from "react";
+import { checkDefaultTheme } from "../../main.jsx";
 
 
-
+// const DarkModeEnabled = checkDefaultTheme();
 const DashboarContext=createContext()
-const checkDefaultTheme=()=>{
-    const isDarkTheme=localStorage.getItem("darkTheme")==="true"
-    document.body.classList.toggle("dark-theme", isDarkTheme);
-    return isDarkTheme
-}
+
 
 
 const DashboardLayout = () => {
+    const user = { name: "Jonh Doe" };
+    const [showSidebar, setShowSidebar] = useState(false);
+    const [isDarkTheme, setIsDarkTheme] = useState(checkDefaultTheme());
 
-    const user={name:"Jonh Doe"}
-    const [showSidebar,setShowSidebar]=useState(false)
-    const [isDarkTheme,setIsDarkTheme]=useState(checkDefaultTheme())
-
-    const toggleTheme=()=>{
-        const updatedTheme=!isDarkTheme;
-        setIsDarkTheme(prev=>!prev)
+    const toggleTheme = () => {
+        const updatedTheme = !isDarkTheme;
+        setIsDarkTheme((prev) => !prev);
         console.log("Toggle Theme");
 
-        localStorage.setItem("darkTheme",updatedTheme);
-    }
+        localStorage.setItem("darkTheme", updatedTheme);
+    };
 
     const toggleSidebar = () => setShowSidebar((prev) => !prev);
 
-    const logoutUser=()=>{
-        console.log("User log out!")
-    }
+    const logoutUser = () => {
+        console.log("User log out!");
+    };
 
-
-  return (
-      <DashboarContext.Provider
-          value={{
-              user,
-              showSidebar,
-              isDarkTheme,
-              toggleSidebar,
-              toggleTheme,
-              logoutUser,
-          }}
-      >
-          <Wrapper>
-              <main className="dashboard">
-                  <Sidebar />
-                  <BigSidebar />
-                  <div>
-                      <Navbar toggleTheme={toggleTheme}/>
-                      <div className="dashboard-page">
-                          <Outlet />
-                      </div>
-                  </div>
-              </main>
-          </Wrapper>
-      </DashboarContext.Provider>
-  );
-}
+    return (
+        <DashboarContext.Provider
+            value={{
+                user,
+                showSidebar,
+                isDarkTheme,
+                toggleSidebar,
+                toggleTheme,
+                logoutUser,
+            }}
+        >
+            <Wrapper>
+                <main className="dashboard">
+                    <Sidebar />
+                    <BigSidebar />
+                    <div>
+                        <Navbar toggleTheme={toggleTheme} />
+                        <div className="dashboard-page">
+                            <Outlet />
+                        </div>
+                    </div>
+                </main>
+            </Wrapper>
+        </DashboarContext.Provider>
+    );
+};
 
 export const useDashboardContext =()=> useContext(DashboarContext)
 export default DashboardLayout
