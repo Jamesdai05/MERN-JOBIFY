@@ -1,8 +1,9 @@
 import Wrapper from "./wrapper/sidebar.js"
 import Logo from './Logo';
 import { useDashboardContext } from "../pages/Admin/DashboardLayout.jsx";
-import Navlinks from "./Navlinks.jsx";
 import { FaTimes } from "react-icons/fa";
+import links from "../utils/links.jsx";
+import { NavLink } from "react-router-dom";
 // import { useState } from "react";
 
 
@@ -24,9 +25,23 @@ const Sidebar = () => {
                       <FaTimes />
                   </button>
                   <header>
-                    <Logo />
+                      <Logo />
                   </header>
-                  <Navlinks />
+                  <div className="nav-links">
+                      {links.map((link) => {
+                          const { icon, text, path } = link;
+                          return (
+                              <NavLink
+                                  key={text}
+                                  to={path}
+                                  className="nav-link"
+                              >
+                                  <span className="icon">{icon}</span>
+                                  {text}
+                              </NavLink>
+                          );
+                      })}
+                  </div>
               </div>
           </div>
       </Wrapper>

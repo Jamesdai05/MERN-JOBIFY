@@ -57,7 +57,7 @@ const Wrapper=styled.aside`
       font-size:1.5rem;
     }
     .nav-link:hover {
-      color: var(--primary-500);
+      color: var(--secondary-500);
     }
     .logo{
       display:block;
@@ -69,7 +69,7 @@ const Wrapper=styled.aside`
       place-items: center;
     }
     .active {
-      color: var(--primary-500);
+      color: var(--secondary-500);
     }
     @media (min-width: 992px) {
         display: none;
