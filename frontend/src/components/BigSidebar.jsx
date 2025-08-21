@@ -5,7 +5,7 @@ import Navlinks from "./Navlinks.jsx";
 
 
 
-const BigSidebar = () => {
+const BigSidebar = ({isBigSidebar}) => {
     const {showSidebar}=useDashboardContext()
     const bigSidebarClassName = showSidebar
         ? "sidebar-container show-sidebar"
@@ -19,7 +19,7 @@ const BigSidebar = () => {
                       <Logo />
                   </header>
                   <div>
-                      <Navlinks />
+                      <Navlinks isBigSidebar />
                   </div>
               </div>
           </div>

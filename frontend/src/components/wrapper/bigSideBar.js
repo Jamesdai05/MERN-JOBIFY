@@ -41,6 +41,11 @@ const Wrapper=styled.div`
             padding:0 1rem;
             text-transform:capitalize;
         }
+        .nav-link:hover{
+            scale:1.2;
+            color:var(--secondary-400);
+            transition:var(--transition)
+        }
         li{
             list-style-type:none;
         }
