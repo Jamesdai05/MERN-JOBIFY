@@ -2,9 +2,10 @@ import Wrapper from "./wrapper/sidebar.js"
 import Logo from './Logo';
 import { useDashboardContext } from "../pages/Admin/DashboardLayout.jsx";
 import { FaTimes } from "react-icons/fa";
-import links from "../utils/links.jsx";
+// import links from "../utils/links.jsx";
 import { NavLink } from "react-router-dom";
 // import { useState } from "react";
+import Navlinks from './Navlinks';
 
 
 const Sidebar = () => {
@@ -27,7 +28,7 @@ const Sidebar = () => {
                   <header>
                       <Logo />
                   </header>
-                  <div className="nav-links">
+                  {/* <div className="nav-links">
                       {links.map((link) => {
                           const { icon, text, path } = link;
                           return (
@@ -35,13 +36,15 @@ const Sidebar = () => {
                                   key={text}
                                   to={path}
                                   className="nav-link"
+                                  onClick={toggleSidebar}
                               >
                                   <span className="icon">{icon}</span>
                                   {text}
                               </NavLink>
                           );
                       })}
-                  </div>
+                  </div> */}
+                  <Navlinks />
               </div>
           </div>
       </Wrapper>

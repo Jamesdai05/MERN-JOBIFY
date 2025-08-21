@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Logo from "./Logo.jsx";
 // import styled from "styled-components";
 import { FaAlignLeft, FaBars, FaTimes } from "react-icons/fa";
-import { useState } from "react";
 import { useDashboardContext } from "../pages/Admin/DashboardLayout.jsx";
 import ThemeToggle from "./ThemeToggle.jsx";
 import LogoutContainer from "./LogoutContainer.jsx";
@@ -73,13 +72,11 @@ import Wrapper from "./wrapper/navbar.js";
 
 
 const Navbar = () => {
-    const[isOpen,setIsOpen]=useState(false)
-
     const {toggleSidebar}=useDashboardContext();
     // console.log(data)
 
   return (
-      <Wrapper $isOpen={isOpen}>
+      <Wrapper>
           <div className="nav-center">
               <button
                   type="button"
