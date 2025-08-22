@@ -4,7 +4,6 @@ import {
     getAJobById,
     addANewJob,
     editAJobById,
-    partiallyEditAJobById,
     deleteAJob
 } from '../controllers/jobsController.js';
 
@@ -50,7 +49,7 @@ router.put("/edit/:id",editAJobById)
 // @route  PATCH /api/jobs/edit/:id
 // @access User/private
 
-router.patch("/edit/:id",partiallyEditAJobById)
+// router.patch("/edit/:id",partiallyEditAJobById)
 
 
 // @desc   remove a job

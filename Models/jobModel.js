@@ -7,11 +7,11 @@ const jobSchema=new Schema(
     {
         position:{
             type:String,
-            require:true,
+            required:true,
         },
         company:{
             type:String,
-            require:true,
+            required:true,
         },
         jobType:{
             type:String,

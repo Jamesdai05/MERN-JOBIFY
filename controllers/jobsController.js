@@ -40,46 +40,36 @@ const addANewJob=async(req,res)=>{
 
 const editAJobById=async(req,res)=>{
    const {id}=req.params;
-   const {position,company,jobStatus,jobType,location}=req.body
-   const job=await Job.findById(id);
-   if(job){
-        // Object.assign(job,req.body)
-        // const updatedJob=await job.save()
-        // return res.status(201).json(updatedJob)
-        job.position=position;
-        job.company=company;
-        job.jobStatus=jobStatus;
-        job.jobType=jobType;
-        job.location=location;
-
-        const updatedJob=await job.save();
-        return res.status(201).json({
-            message:"Job updated successfully!",
-            job:updatedJob,
-        })
+//    const {position,company,jobStatus,jobType,location}=req.body
+    const job=await Job.findById(id);
+    console.log("Before upating:",job);
+   const updatedJob=await Job.findByIdAndUpdate(id,req.body,{new:true});
+   console.log("updated Job:",updatedJob);
+    if(updatedJob){
+        return res.status(201).json({message:"Job updated successfully!",job:updatedJob});
    }else{
         res.status(404).json({message:"Job does not found!"});
    }
 }
 
-const partiallyEditAJobById=async(req,res)=>{
-    const {id}=req.params;
-    const {position,company,jobStatus,jobType,location}=req.body
-    const job=await Job.findById(id);
-    if(!job){
-        return res.status(404).json({message:"Job does not found!"});
-    }else{
-        if(position !==undefined) job.position=position;
-        if(company !==undefined) job.company=company;
-        if(jobStatus !==undefined) job.jobStatus=jobStatus;
-        if(jobType !==undefined) job.jobType=jobType;
-        if(location !==undefined) job.location=location;
+// const partiallyEditAJobById=async(req,res)=>{
+//     const {id}=req.params;
+//     const {position,company,jobStatus,jobType,location}=req.body
+//     const job=await Job.findByIdAndUpdate(id);
+//     if(!job){
+//         return res.status(404).json({message:"Job does not found!"});
+//     }else{
+//         if(position !==undefined) job.position=position;
+//         if(company !==undefined) job.company=company;
+//         if(jobStatus !==undefined) job.jobStatus=jobStatus;
+//         if(jobType !==undefined) job.jobType=jobType;
+//         if(location !==undefined) job.location=location;
 
-        const updatedJob=await job.save();
-        res.status(201).json({message:"Job updated successfully!",job:updatedJob})
-    }
+//         const updatedJob=await job.save();
+//         res.status(201).json({message:"Job updated successfully!",job:updatedJob})
+//     }
 
-}
+// }
 
 
 const deleteAJob=async(req,res)=>{
@@ -98,6 +88,5 @@ export {
     getAJobById,
     addANewJob,
     editAJobById,
-    partiallyEditAJobById,
     deleteAJob,
 }
