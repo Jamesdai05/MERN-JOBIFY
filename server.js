@@ -26,7 +26,9 @@ app.get("/", (req,res)=>{
     res.send("Hello world")
 })
 
-
+app.get("/api/jobs",(req,res)=>{
+    res.send("Hello world!")
+})
 
 app.get("/api/jobs/all-jobs",(req,res)=>{
     try {
@@ -55,8 +57,8 @@ app.post("/api/jobs/add-job",(req,res)=>{
             return res.json({message:"please provide the title and company!"});
         }
         const newJob={id:nanoid(),title,company};
-        const updatedJobs=[...jobs,newJob];
-        res.status(201).json({message:"Job added successfully!",updatedJobs})
+        // const newJob=newJob;
+        res.status(201).json({message:"Job added successfully!",newJob})
     } catch (error) {
         console.log("error occurred during job adding",error);
     }
@@ -78,6 +80,25 @@ app.put("/api/jobs/edit/:id",(req,res)=>{
             return res.status(400).json({ message: error.message });
         }
         return res.status(500).json({message:"Error in updating jobs!"})
+    }
+})
+
+app.patch("/api/jobs/update/:id",(req,res)=>{
+    try{
+        const {id}=req.params;
+        const job=jobs.find(job=>job.id===id);
+        const {title,company}=req.body;
+        if(company){
+            const updatedJob={...job,company};
+            return res.status(201).json({updatedJob});
+        }
+        if(title){
+            const updatedJob={...job,title};
+            return res.status(201).json({updatedJob});
+        }
+        return res.json({message:"please at least update one field!"})
+    }catch(err){
+        return res.json({err})
     }
 })
 
