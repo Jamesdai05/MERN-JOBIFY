@@ -13,11 +13,6 @@ const jobSchema=new Schema(
             type:String,
             require:true,
         },
-        status:{
-            type:String,
-            require:true,
-            default:JOB_STATUS.PENDING,
-        },
         jobType:{
             type:String,
             enum:Object.values(JOB_TYPE),
