@@ -28,6 +28,10 @@ const jobSchema=new Schema(
             enum:Object.values(JOB_STATUS),
             default: JOB_STATUS.PENDING,
         },
+        location:{
+            type:String,
+            default:"Singapore",
+        },
         role: {
             type: String,
             enum: ['user', 'admin'],

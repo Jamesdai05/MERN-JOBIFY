@@ -28,11 +28,7 @@ const getAJobById=(req,res)=>{
 
 const addANewJob=(req,res)=>{
     try {
-        const {title,company}=req.body;
-        if(!title || !company){
-            return res.json({message:"please provide the title and company!"});
-        }
-        const newJob={id:nanoid(),title,company};
+        const {position,company}=
         // const newJob=newJob;
         res.status(201).json({message:"Job added successfully!",newJob})
     } catch (error) {
