@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import jobs from '../Models/jobs.js';
+import jobs from '../data/jobs.js';
 import asyncHandler from '../middleWare/asyncHandler.js';
 
 
