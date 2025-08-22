@@ -1,90 +1,95 @@
-import { nanoid } from 'nanoid';
-import jobs from '../data/jobs.js';
-import asyncHandler from '../middleWare/asyncHandler.js';
+// comment the below code since we use the express-async-errors;
+// import asyncHandler from '../middleWare/asyncHandler.js';
+import Job from '../Models/jobModel.js';
 
 
 
-
-const getAllJobs=(req,res)=>{
-   try {
-        return res.status(200).json(jobs)
-    } catch (error) {
-        console.log(error)
-        res.json("Error during fetching jobs!")
-        next(error)
-    }
+const getAllJobs=async(req,res)=>{
+   const jobs= await Job.find({});
+//    console.log(jobs)
+   return res.json(jobs);
 }
 
-const getAJobById=(req,res)=>{
-    try {
-        const id=req.params.id;
-        const job=jobs.find(job=>job.id===id)
-        return res.json(job)
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-
-const addANewJob=(req,res)=>{
-    try {
-        const {position,company}=
-        // const newJob=newJob;
-        res.status(201).json({message:"Job added successfully!",newJob})
-    } catch (error) {
-        console.log("error occurred during job adding",error);
-    }
-}
-
-
-const editAJobById=(req,res)=>{
-    try {
-        const id=req.params.id;
-        const job=jobs.find(job=>job.id===id);
-        console.log(job);
-        if(!job){
-            return res.json("Job does not exists!Please try again!")
-        }
-        const {title,company}=req.body;
-        const updatedJob={...job,title,company}
-        return res.status(201).json({message:"Job updated successfully!",updatedJob})
-    } catch (error) {
-        console.log(error)
-        if (error.message.includes('Invalid job ID') || error.message.includes('Product not found')) {
-            return res.status(400).json({ message: error.message });
-        }
-        return res.status(500).json({message:"Error in updating jobs!"})
-    }
-}
-
-const partiallyEditAJobById=(req,res)=>{
-    try{
-        const {id}=req.params;
-        const job=jobs.find(job=>job.id===id);
-        const {title,company}=req.body;
-        if(company){
-            const updatedJob={...job,company};
-            return res.status(201).json({updatedJob});
-        }
-        if(title){
-            const updatedJob={...job,title};
-            return res.status(201).json({updatedJob});
-        }
-        return res.json({message:"please at least update one field!"})
-    }catch(err){
-        return res.json({err})
-    }
-}
-
-
-const deleteAJob=(req,res)=>{
+const getAJobById=async(req,res)=>{
     const id=req.params.id;
-    const jobInd=jobs.findIndex(job=>job.id===id);
-    if(!jobInd){
+    const job=await Job.findById(id);
+    if(job){
+        return res.json(job);
+    }else{
+        res.status(404).josn({message:"Job does not exists!"});
+    }
+}
+
+
+const addANewJob=async(req,res)=>{
+    const {position,company}=req.body;
+    if(!position || !company){
+        return res.status(400).json({error:"Please fill in the required fields!"});
+    }
+    const newJob=new Job({
+        position,
+        company,
+        createdBy:req.user?._id
+    });
+    const createdJob=await newJob.save();
+    return res.status(201).json({
+        message:"Job created successfully!",
+        job:createdJob})
+}
+
+
+const editAJobById=async(req,res)=>{
+   const {id}=req.params;
+   const {position,company,jobStatus,jobType,location}=req.body
+   const job=await Job.findById(id);
+   if(job){
+        // Object.assign(job,req.body)
+        // const updatedJob=await job.save()
+        // return res.status(201).json(updatedJob)
+        job.position=position;
+        job.company=company;
+        job.jobStatus=jobStatus;
+        job.jobType=jobType;
+        job.location=location;
+
+        const updatedJob=await job.save();
+        return res.status(201).json({
+            message:"Job updated successfully!",
+            job:updatedJob,
+        })
+   }else{
+        res.status(404).json({message:"Job does not found!"});
+   }
+}
+
+const partiallyEditAJobById=async(req,res)=>{
+    const {id}=req.params;
+    const {position,company,jobStatus,jobType,location}=req.body
+    const job=await Job.findById(id);
+    if(!job){
+        return res.status(404).json({message:"Job does not found!"});
+    }else{
+        if(position !==undefined) job.position=position;
+        if(company !==undefined) job.company=company;
+        if(jobStatus !==undefined) job.jobStatus=jobStatus;
+        if(jobType !==undefined) job.jobType=jobType;
+        if(location !==undefined) job.location=location;
+
+        const updatedJob=await job.save();
+        res.status(201).json({message:"Job updated successfully!",job:updatedJob})
+    }
+
+}
+
+
+const deleteAJob=async(req,res)=>{
+    const id=req.params.id;
+    const job=await Job.findById(id);
+    if(!job){
         return res.status(404).json({message:"Job not found"});
     }
-    const deletedJob=jobs.splice(jobInd,1)
-    res.json({message:"Job deleted!",deletedJob})
+    await job.deleteOne({id:job._id})
+    res.json({message:"Job deleted sueccessfully!"})
 }
 
 

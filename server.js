@@ -1,14 +1,18 @@
 import express from "express";
+import "express-async-errors"; //the same function to use middleware of asynchandleer
 import morgan from "morgan";
 import dotenv from "dotenv";
 import jobRouter from "./routes/jobRoutes.js";
 import {notFound,errorHandler} from "./middleWare/errorMiddleware.js";
+import connectDB from "./utils/DBconnect.js";
 
 const app=express();
 
 dotenv.config()
 
 const port= process.env.PORT || 4000
+
+connectDB();
 
 
 
