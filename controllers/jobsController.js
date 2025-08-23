@@ -23,9 +23,9 @@ const getAJobById=async(req,res)=>{
 
 const addANewJob=async(req,res)=>{
     const {position,company,jobType,location,jobStatus}=req.body;
-    if(!position || !company){
-        return res.status(400).json({error:"Please fill in the required fields!"});
-    }
+    // if(!position || !company){
+    //     return res.status(400).json({error:"Please fill in the required fields!"});
+    // }
     const newJob=new Job({
         position,
         company,
@@ -44,10 +44,8 @@ const addANewJob=async(req,res)=>{
 const editAJobById=async(req,res)=>{
    const {id}=req.params;
 //    const {position,company,jobStatus,jobType,location}=req.body
-    const job=await Job.findById(id);
-    console.log("Before upating:",job);
    const updatedJob=await Job.findByIdAndUpdate(id,req.body,{new:true});
-   console.log("updated Job:",updatedJob);
+//    console.log("updated Job:",updatedJob);
     if(updatedJob){
         return res.status(201).json({message:"Job updated successfully!",job:updatedJob});
    }else{
