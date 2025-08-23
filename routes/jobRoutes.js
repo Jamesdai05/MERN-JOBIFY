@@ -9,6 +9,7 @@ import {
 } from '../controllers/jobsController.js';
 import {idParamsValidator, validator} from "../middleWare/validationMiddleware.js";
 import { idValidator, jobValidator, updateJobValidator } from '../validators/jobValidator.js';
+import { protectRoute } from '../middleWare/authMiddleware.js';
 
 
 
@@ -21,27 +22,27 @@ const router = express.Router()
 // @route  GET /api/jobs
 // @access User/private
 
-router.get("/all-jobs",getAllJobs)
+router.get("/all-jobs",protectRoute,getAllJobs)
 
 
 // @desc   fetch single job
 // @route  GET /api/jobs/:id
 // @access User/private
 
-router.get("/:id",idParamsValidator(idValidator),getAJobById)
+router.get("/:id",idParamsValidator(idValidator),protectRoute,getAJobById)
 
 
 // @desc   add a new job
 // @route  POST /api/jobs/add-job
 // @access User/private
 
-router.post("/add-job",validator(jobValidator),addANewJob)
+router.post("/add-job",protectRoute,validator(jobValidator),addANewJob)
 
 // @desc   update a job
 // @route  PUT /api/jobs/edit/:id
 // @access User/private
 
-router.put("/edit/:id",idParamsValidator(idValidator),validator(jobValidator),editAJobById)
+router.put("/edit/:id",idParamsValidator(idValidator),validator(jobValidator),protectRoute,editAJobById)
 
 
 // @desc   update a job(partially)
@@ -55,7 +56,7 @@ router.patch("/edit/:id",idParamsValidator(idValidator),validator(updateJobValid
 // @route  DELETE /api/jobs/delete/:id
 // @access User/private
 
-router.delete("/delete/:id",idParamsValidator(idValidator),deleteAJob)
+router.delete("/delete/:id",idParamsValidator(idValidator),protectRoute,deleteAJob)
 
 export default router;
 

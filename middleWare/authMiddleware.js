@@ -1,0 +1,30 @@
+import jwt from "jsonwebtoken";
+import User from "../Models/userModel.js";
+
+
+const protectRoute=async(req,res,next)=>{
+
+    const token=req.cookies.jwt;
+
+    if(token){
+        try{
+            const decoded=jwt.verify(token,process.env.JWT_SECRET);
+
+            req.user=await User.findById(decoded.userId).select("-password");
+
+            next();
+        }catch(e){
+            console.error(e);
+            res.status(401);
+            throw new Error("Unauthorized login, token failed!");
+        }
+    }else{
+        res.status(401);
+        throw new Error("Unauthorized login, missing token!")
+    }
+}
+
+
+
+
+export {protectRoute}

@@ -6,6 +6,7 @@ import jobRouter from "./routes/jobRoutes.js";
 import authRouter from "./routes/authRoutes.js";
 import {notFound,errorHandler} from "./middleWare/errorMiddleware.js";
 import connectDB from "./utils/DBconnect.js";
+import cookieParser from "cookie-parser";
 
 const app=express();
 
@@ -23,6 +24,7 @@ connectDB();
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(morgan("dev"));
+app.use(cookieParser())
 
 
 app.get("/", (req,res)=>{
