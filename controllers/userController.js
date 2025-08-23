@@ -36,7 +36,7 @@ const login=async(req,res)=>{
             role:user.role,
         })
     }
-    res.status(401).json({message:"Email or password is wrong!"})
+    res.status(401).json({message:"Invalid credentials!Please try again."})
 }
 
 
