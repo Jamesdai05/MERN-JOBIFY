@@ -41,21 +41,21 @@ router.post("/add-job",validator(jobValidator),addANewJob)
 // @route  PUT /api/jobs/edit/:id
 // @access User/private
 
-router.put("/edit/:id",validator(jobValidator),editAJobById)
+router.put("/edit/:id",idParamsValidator(idValidator),validator(jobValidator),editAJobById)
 
 
 // @desc   update a job(partially)
 // @route  PATCH /api/jobs/edit/:id
 // @access User/private
 
-router.patch("/edit/:id",validator(updateJobValidator),partiallyEditAJobById)
+router.patch("/edit/:id",idParamsValidator(idValidator),validator(updateJobValidator),partiallyEditAJobById)
 
 
 // @desc   remove a job
 // @route  DELETE /api/jobs/delete/:id
 // @access User/private
 
-router.delete("/delete/:id",deleteAJob)
+router.delete("/delete/:id",idParamsValidator(idValidator),deleteAJob)
 
 export default router;
 

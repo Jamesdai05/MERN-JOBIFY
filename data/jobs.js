@@ -12,11 +12,11 @@
 // ]
 
 const jobs=[
-    {title:"Frontend developmer",company:"Meta",jobType:"full-time",jobStatus:"pending"},
-    {title:"Full-stack developmer",company:"Google",jobType:"full-time",jobStatus:"pending"},
-    {title:"Software developmer",company:"Meta",jobType:"part-time",jobStatus:"pending"},
-    {title:"Backend developmer",company:"Tictok",jobType:"full-time",jobStatus:"interview"},
-    {title:"Frontend developmer",company:"Paypal",jobType:"full-time",jobStatus:"pending"},
+    {position:"Frontend developmer",company:"Meta",jobType:"full-time",jobStatus:"pending"},
+    {position:"Full-stack developmer",company:"Google",jobType:"full-time",jobStatus:"pending"},
+    {position:"Software developmer",company:"Meta",jobType:"part-time",jobStatus:"pending"},
+    {position:"Backend developmer",company:"Tictok",jobType:"full-time",jobStatus:"interview"},
+    {position:"Frontend developmer",company:"Paypal",jobType:"full-time",jobStatus:"pending"},
 ]
 
 export default jobs;

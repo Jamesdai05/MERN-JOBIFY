@@ -7,12 +7,14 @@ const users= [
     email:"admin@email.com",
     password:bcrypt.hashSync("abc123456",10),
     role:"admin",
+    location:"Singapore",
   },
 
   {
     name:"John Green",
     email:"jonh_green@email.com",
-    password:bcrypt.hashSync("abc123456",10)
+    password:bcrypt.hashSync("abc123456",10),
+    location:"China",
   },
 ]
 
