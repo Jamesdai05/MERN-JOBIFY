@@ -4,21 +4,17 @@ import {
     getAJobById,
     addANewJob,
     editAJobById,
-    deleteAJob
+    deleteAJob,
+    partiallyEditAJobById,
 } from '../controllers/jobsController.js';
-import validator from '../middleWare/validationMiddleware.js';
-import jobValidator from '../validators/jobValidator.js';
+import {idParamsValidator, validator} from "../middleWare/validationMiddleware.js";
+import { idValidator, jobValidator, updateJobValidator } from '../validators/jobValidator.js';
+
+
 
 
 const router = express.Router()
 
-
-
-// @desc   baseUrl
-// @route  GET /api/jobs
-// router.get("/",(req,res)=>{
-//     res.send("Hello world!")
-// })
 
 
 // @desc   fetch all jobs
@@ -32,7 +28,7 @@ router.get("/all-jobs",getAllJobs)
 // @route  GET /api/jobs/:id
 // @access User/private
 
-router.get("/:id",getAJobById)
+router.get("/:id",idParamsValidator(idValidator),getAJobById)
 
 
 // @desc   add a new job
@@ -52,7 +48,7 @@ router.put("/edit/:id",validator(jobValidator),editAJobById)
 // @route  PATCH /api/jobs/edit/:id
 // @access User/private
 
-// router.patch("/edit/:id",partiallyEditAJobById)
+router.patch("/edit/:id",validator(updateJobValidator),partiallyEditAJobById)
 
 
 // @desc   remove a job
@@ -61,5 +57,19 @@ router.put("/edit/:id",validator(jobValidator),editAJobById)
 
 router.delete("/delete/:id",deleteAJob)
 
-
 export default router;
+
+
+
+
+
+// below is just another way of router buidling
+
+/* router.route("/all-jobs").get(getAllJobs);
+
+
+router.route("/:id").get(getAJobById);
+
+router.route("/edit/:id").put(editAJobById).patch(partiallyEditAJobById);
+
+router.route("/delete/:id").delete(deleteAJob); */

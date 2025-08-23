@@ -12,4 +12,18 @@ const jobValidator=Joi.object({
     role:Joi.string().label('Role').valid('user','admin'),
 })
 
-export default jobValidator;
+const updateJobValidator=Joi.object({
+    position: Joi.string().label("Position").required().optional(),
+    company:Joi.string().label("Company").required().optional(),
+    jobType: Joi.string().valid(...Object.values(JOB_TYPE)).label("Job Type").optional(),
+    jobStatus:Joi.string().label("Job Status").valid(...Object.values(JOB_STATUS)).optional(),
+    location:Joi.string().default('Singapore').label('Location').required().optional(),
+    role:Joi.string().label('Role').valid('user','admin').optional(),
+}).min(1);//at least update one field
+
+
+const idValidator=Joi.object({
+    id:Joi.string().hex().length(24).required(), //length should be 24 required
+})
+
+export {jobValidator,updateJobValidator,idValidator};

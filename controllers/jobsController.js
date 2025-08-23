@@ -53,24 +53,24 @@ const editAJobById=async(req,res)=>{
    }
 }
 
-// const partiallyEditAJobById=async(req,res)=>{
-//     const {id}=req.params;
-//     const {position,company,jobStatus,jobType,location}=req.body
-//     const job=await Job.findByIdAndUpdate(id);
-//     if(!job){
-//         return res.status(404).json({message:"Job does not found!"});
-//     }else{
-//         if(position !==undefined) job.position=position;
-//         if(company !==undefined) job.company=company;
-//         if(jobStatus !==undefined) job.jobStatus=jobStatus;
-//         if(jobType !==undefined) job.jobType=jobType;
-//         if(location !==undefined) job.location=location;
+const partiallyEditAJobById=async(req,res)=>{
+    const {id}=req.params;
+    const {position,company,jobStatus,jobType,location}=req.body
+    const job=await Job.findByIdAndUpdate(id);
+    if(!job){
+        return res.status(404).json({message:"Job does not found!"});
+    }else{
+        if(position !==undefined) job.position=position;
+        if(company !==undefined) job.company=company;
+        if(jobStatus !==undefined) job.jobStatus=jobStatus;
+        if(jobType !==undefined) job.jobType=jobType;
+        if(location !==undefined) job.location=location;
 
-//         const updatedJob=await job.save();
-//         res.status(201).json({message:"Job updated successfully!",job:updatedJob})
-//     }
+        const updatedJob=await job.save();
+        res.status(201).json({message:"Job updated successfully!",job:updatedJob})
+    }
 
-// }
+}
 
 
 const deleteAJob=async(req,res)=>{
@@ -89,4 +89,5 @@ export {
     addANewJob,
     editAJobById,
     deleteAJob,
+    partiallyEditAJobById,
 }
