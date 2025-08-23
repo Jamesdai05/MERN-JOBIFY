@@ -27,7 +27,6 @@ const userSchema=new Schema({
     location:{
       type:String,
       default:"Singapore",
-      required:true,
     }
 },{timestamps:true})
 

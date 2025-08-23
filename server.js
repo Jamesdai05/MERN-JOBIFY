@@ -3,6 +3,7 @@ import "express-async-errors"; //the same function to use middleware of asynchan
 import morgan from "morgan";
 import dotenv from "dotenv";
 import jobRouter from "./routes/jobRoutes.js";
+import authRouter from "./routes/authRoutes.js";
 import {notFound,errorHandler} from "./middleWare/errorMiddleware.js";
 import connectDB from "./utils/DBconnect.js";
 
@@ -29,6 +30,8 @@ app.get("/", (req,res)=>{
 })
 
 app.use("/api/jobs",jobRouter)
+
+app.use("/api/auth",authRouter)
 
 // app.post("/",(req,res)=>{
 //     console.log(req.body.title)
