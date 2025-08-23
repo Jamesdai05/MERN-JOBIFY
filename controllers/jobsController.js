@@ -22,13 +22,16 @@ const getAJobById=async(req,res)=>{
 
 
 const addANewJob=async(req,res)=>{
-    const {position,company}=req.body;
+    const {position,company,jobType,location,jobStatus}=req.body;
     if(!position || !company){
         return res.status(400).json({error:"Please fill in the required fields!"});
     }
     const newJob=new Job({
         position,
         company,
+        jobType,
+        location,
+        jobStatus,
         createdBy:req.user?._id
     });
     const createdJob=await newJob.save();
@@ -74,11 +77,10 @@ const editAJobById=async(req,res)=>{
 
 const deleteAJob=async(req,res)=>{
     const id=req.params.id;
-    const job=await Job.findById(id);
+    const job=await Job.findByIdAndDelete(id);
     if(!job){
         return res.status(404).json({message:"Job not found"});
     }
-    await job.deleteOne({id:job._id})
     res.json({message:"Job deleted sueccessfully!"})
 }
 

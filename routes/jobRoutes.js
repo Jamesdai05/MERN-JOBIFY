@@ -6,6 +6,9 @@ import {
     editAJobById,
     deleteAJob
 } from '../controllers/jobsController.js';
+import validator from '../middleWare/validationMiddleware.js';
+import jobValidator from '../validators/jobValidator.js';
+
 
 const router = express.Router()
 
@@ -36,13 +39,13 @@ router.get("/:id",getAJobById)
 // @route  POST /api/jobs/add-job
 // @access User/private
 
-router.post("/add-job",addANewJob)
+router.post("/add-job",validator(jobValidator),addANewJob)
 
 // @desc   update a job
 // @route  PUT /api/jobs/edit/:id
 // @access User/private
 
-router.put("/edit/:id",editAJobById)
+router.put("/edit/:id",validator(jobValidator),editAJobById)
 
 
 // @desc   update a job(partially)
