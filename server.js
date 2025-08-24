@@ -31,14 +31,11 @@ app.get("/", (req,res)=>{
     res.send("Hello world")
 })
 
+
 app.use("/api/jobs",jobRouter)
 
 app.use("/api/auth",authRouter)
 
-// app.post("/",(req,res)=>{
-//     console.log(req.body.title)
-//     res.send("Post request submitted.")
-// })
 
 app.use(notFound)
 app.use(errorHandler)

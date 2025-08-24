@@ -6,24 +6,27 @@ const protectRoute=async(req,res,next)=>{
 
     const token=req.cookies.jwt;
 
-    if(token){
-        try{
-            const decoded=jwt.verify(token,process.env.JWT_SECRET);
+    if (token) {
+        try {
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            req.user = await User.findById(decoded.userId).select("-password");
 
-            req.user=await User.findById(decoded.userId).select("-password");
+            if (!req.user) {
+                res.status(401);
+                return next(new Error("Authentication failed - User not found"));
+            }
 
             next();
-        }catch(e){
-            console.error(e);
+        } catch (err) {
+            console.error(err);
             res.status(401);
-            throw new Error("Unauthorized login, token failed!");
+            return next(new Error("Authentication failed - Invalid or expired token"));
         }
     }else{
         res.status(401);
-        throw new Error("Unauthorized login, missing token!")
+        return next(new Error("Authentication required - Please log in to access this resource"));
     }
 }
-
 
 
 
