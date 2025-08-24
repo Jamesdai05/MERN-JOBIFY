@@ -1,63 +1,47 @@
+import Job from "../Models/jobModel.js";
 import User from "../Models/userModel.js";
-import generationToken from "../utils/tokenGeneration.js";
 
 
-const registration=async(req,res)=>{
-    const {name,email,password,location}=req.body;
+const getUserProfile=async(req,res)=>{
+    const user=await User.findById(req.user._id);
 
-    const isUserRegistered=await User.findOne({email});
-
-    if(isUserRegistered){
-        return res.status(400).json({message:"Email already exists"});
-    }
-    const user=await User.create({
-        name,
-        email,
-        password,
-        location,
-    })
     if(user){
-        generationToken(res,user._id)
-        res.status(201).json({user});
-    }
-}
-
-
-
-const login=async(req,res)=>{
-    const {email,password}=req.body;
-
-    const user= await User.findOne({email});
-    if(user && await user.matchPassword(password)){
-        generationToken(res,user._id)
-        // console.log(req.user);
-        return res.status(200).json({
+        res.status(200).json({
+            // id:user._id,
             name:user.name,
             email:user.email,
+            location:user.location,
             role:user.role,
-            id:user._id,
         })
     }
-    res.status(401).json({message:"Invalid credentials!Please try again."})
+
+    res.status(404).json("User does not exists!Please try again.");
 }
 
 
 
+const getStatistics=async(req,res)=>{
+    const jobs=await Job.countDocuments();
+    const users=await User.countDocuments();
 
-const logout=async(req,res)=>{
-    // console.log("log out");
-    // res.send("logout");
-    res.cookie("jwt","",{
-        httpOnly:true,
-        expires:new Date(0),  //expire immediate
-    })
-    return res.status(200).json({message:"Log out successfully!"});
+    res.status(200).json({jobCount:jobs,userCount:users});
+}
+
+
+
+const updateUserProfile=async(req,res)=>{
+    const id=req.user._id;
+    const updatedProfile=await User.findByIdAndUpdate(id,req.body,{new:true}).select("-password -_id");
+    if(updatedProfile){
+        return res.status(201).json({message:"Profile updated successfully!",user:updatedProfile})
+    }
+    res.status(404).json({message:"Job does not found!"});
 }
 
 
 
 export {
-    registration,
-    login,
-    logout,
+    getUserProfile,
+    getStatistics,
+    updateUserProfile,
 }

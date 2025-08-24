@@ -4,6 +4,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import jobRouter from "./routes/jobRoutes.js";
 import authRouter from "./routes/authRoutes.js";
+import userRouter from "./routes/userRoutes.js";
 import {notFound,errorHandler} from "./middleWare/errorMiddleware.js";
 import connectDB from "./utils/DBconnect.js";
 import cookieParser from "cookie-parser";
@@ -35,6 +36,8 @@ app.get("/", (req,res)=>{
 app.use("/api/jobs",jobRouter)
 
 app.use("/api/auth",authRouter)
+
+app.use("/api/users",userRouter)
 
 
 app.use(notFound)

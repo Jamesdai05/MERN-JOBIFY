@@ -29,5 +29,23 @@ const protectRoute=async(req,res,next)=>{
 }
 
 
+//admin middleware
 
-export {protectRoute}
+const admin=(req,res,next)=>{
+    const role=req.user.role;
+    // console.log(req.user);
+    if (!req.user) {
+        res.status(401);
+        return next(new Error("Unauthorized: No user found in request"));
+  }
+
+    if(req.user && role ==="admin"){
+        return next()
+    }
+    res.status(401)
+
+    return next(new Error("Authentication required - Please log in as admin!"));
+}
+
+
+export {protectRoute,admin}
