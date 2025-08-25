@@ -13,9 +13,10 @@ const Login = () => {
                       Email
                   </label>
                   <input
-                      type="text"
+                      type="email"
                       className="form-input"
                       name="email"
+                      id="email"
                       placeholder="enter the email"
                       required
                   />
@@ -28,8 +29,9 @@ const Login = () => {
                       type="password"
                       className="form-input"
                       name="password"
+                      id="password"
                       placeholder="enter the password"
-                      drequiredd
+                      required
                   />
               </div>
               <div className="submit">

@@ -8,13 +8,17 @@ const Wrapper = styled.section `
     display:flex;
     align-items:center;
     margin-bottom:4rem;
+    height: var(--nav-height);
   }
 
   .page{
-    min-height:calc(100vh - var (--nav-height));
+    min-height:calc(100vh - var(--nav-height));
     display: grid;
     align-items:center;
-    /* margin-top:-1rem; */
+    margin:0 auto;
+    margin-top:-1rem;
+    padding:0 2rem;
+
   }
 
   h1{
@@ -54,7 +58,7 @@ const Wrapper = styled.section `
 
   }
 
-  @media (min-width:990px) {
+  @media (min-width:786px) {
     .main-img{
       display:block;
       /* margin-top:1rem; */

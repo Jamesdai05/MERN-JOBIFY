@@ -59,4 +59,4 @@ const DashboardLayout = () => {
 };
 
 export const useDashboardContext =()=> useContext(DashboarContext)
-export default DashboardLayout
+export default DashboardLayout;
