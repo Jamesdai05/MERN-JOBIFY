@@ -13,7 +13,7 @@ const Register = () => {
         confirmPassword:"",
     })
 
-    
+
 
 
 
