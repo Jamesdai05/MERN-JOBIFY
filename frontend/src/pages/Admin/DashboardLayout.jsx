@@ -4,7 +4,7 @@ import Sidebar from "../../components/Sidebar.jsx";
 import BigSidebar from "../../components/BigSidebar.jsx";
 import Navbar from "../../components/Navbar.jsx";
 import { useContext, useState,createContext } from "react";
-import { checkDefaultTheme } from "../../main.jsx";
+import { checkDefaultTheme } from "../../App.jsx";
 
 
 // const DarkModeEnabled = checkDefaultTheme();

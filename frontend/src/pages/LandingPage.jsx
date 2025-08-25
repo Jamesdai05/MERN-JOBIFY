@@ -8,6 +8,9 @@ const LandingPage = () => {
 
   return (
       <Wrapper>
+          <nav>
+            <Logo />
+          </nav>
           <div className="container page">
               <div className="info">
                   <h1>

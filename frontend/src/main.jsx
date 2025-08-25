@@ -18,13 +18,13 @@ import Admin from './pages/Admin/Admin';
 
 
 
-export const checkDefaultTheme = () => {
-    const isDarkTheme = localStorage.getItem("darkTheme") === "true";
-    document.body.classList.toggle("dark-theme", isDarkTheme);
-    return isDarkTheme;
-};
+// export const checkDefaultTheme = () => {
+//     const isDarkTheme = localStorage.getItem("darkTheme") === "true";
+//     document.body.classList.toggle("dark-theme", isDarkTheme);
+//     return isDarkTheme;
+// };
 
-checkDefaultTheme()
+// checkDefaultTheme();
 
 // const router = createBrowserRouter(
 //     createRoutesFromElements(
@@ -50,8 +50,6 @@ checkDefaultTheme()
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-
       <App />
-
   </StrictMode>
 )

@@ -4,11 +4,11 @@ const Wrapper = styled.section `
   nav {
     width:var(--fluid-width);
     max-width: var(--max-width);
-    margin: 0 auto;
+    margin: 1rem auto;
     display:flex;
     align-items:center;
     margin-bottom:4rem;
-    height: var(--nav-height);
+    /* height: calc( var(--nav-height) + 6rem); */
   }
 
   .page{
@@ -16,9 +16,9 @@ const Wrapper = styled.section `
     display: grid;
     align-items:center;
     margin:0 auto;
-    margin-top:-1rem;
+    margin-top:-3rem;
     padding:0 2rem;
-
+    /* overflow-y:hidden; */
   }
 
   h1{
@@ -50,7 +50,7 @@ const Wrapper = styled.section `
 
   .btn{
     padding: 0.75rem 1rem;
-    background-color: var(--secodary-500);
+    background-color: var(--secondary-500);
     border-radius:5px;
     text-decoration:none;
     color:var(--primary-50);

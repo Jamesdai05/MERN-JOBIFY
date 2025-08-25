@@ -1,4 +1,3 @@
-import { Outlet } from "react-router-dom";
 // import Navbar from "./components/Navbar.jsx";
 import "./App.css";
 import {
@@ -20,6 +19,17 @@ import AllJobs from "./pages/Admin/AllJobs";
 import DashboardLayout from "./pages/Admin/DashboardLayout";
 import Admin from "./pages/Admin/Admin";
 import EditJob from './pages/Admin/EditJob';
+import { useEffect } from "react";
+
+
+export const checkDefaultTheme = () => {
+    const isDarkTheme = localStorage.getItem("darkTheme") === "true";
+    document.body.classList.toggle("dark-theme", isDarkTheme);
+    return isDarkTheme;
+};
+
+
+// checkDefaultTheme();
 
 
 
@@ -81,8 +91,10 @@ const router = createBrowserRouter([
 
 
 const App = () => {
+  useEffect(() => {
+      checkDefaultTheme;
+  }, []);
   return (
-
     <div>
       <RouterProvider router={router}/>
     </div>
