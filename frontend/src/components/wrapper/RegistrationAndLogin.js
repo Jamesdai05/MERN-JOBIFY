@@ -4,9 +4,9 @@ import styled from "styled-components";
 
 const Wrapper=styled.main`
     display:flex;
-    min-height:calc(100vh - var( --nav-height)- 1rem);
+    min-height:calc(100vh - var(--nav-height) - 1rem);
     width:100vw;
-    margin: 10rem auto;
+    margin: 0 auto;
     justify-content:center;
     align-items:center;
 

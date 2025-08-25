@@ -4,21 +4,21 @@ const Wrapper = styled.section `
   nav {
     width:var(--fluid-width);
     max-width: var(--max-width);
-    margin: 1rem auto;
+    margin: 0 auto;
     display:flex;
     align-items:center;
-    margin-bottom:4rem;
-    /* height: calc( var(--nav-height) + 6rem); */
+    margin-bottom:1rem;
+    height: var(--nav-height);
   }
 
   .page{
-    min-height:calc(100vh - var(--nav-height));
+    height:calc(100vh - var(--nav-height) - 1rem);
     display: grid;
     align-items:center;
     margin:0 auto;
-    margin-top:-3rem;
+    /* margin-top:-3.2rem; */
     padding:0 2rem;
-    /* overflow-y:hidden; */
+    overflow-y:hidden;
   }
 
   h1{
