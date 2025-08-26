@@ -2,19 +2,8 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App'
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
-import AddJob from './pages/AddJob';
-import About from './pages/About';
-import HomeLayout from './pages/HomeLayout';
-import Error from './pages/Error';
-import LandingPage from './pages/LandingPage';
-import Login from './pages/Login';
-import Profile from './pages/Profile';
-import Register from './pages/Register';
-import Stats from './pages/Stats';
-import AllJobs from './pages/Admin/AllJobs';
-import DashboardLayout from './pages/Admin/DashboardLayout';
-import Admin from './pages/Admin/Admin';
+import { ToastContainer } from "react-toastify";
+
 
 
 
@@ -48,8 +37,9 @@ import Admin from './pages/Admin/Admin';
 // );
 
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-      <App />
-  </StrictMode>
-)
+createRoot(document.getElementById("root")).render(
+    <StrictMode>
+        <App />
+        <ToastContainer position="top-center" />
+    </StrictMode>
+);

@@ -6,6 +6,7 @@ import {
     Route,
     RouterProvider,
 } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 import AddJob from "./pages/AddJob";
 import About from "./pages/About";
 import HomeLayout from "./pages/HomeLayout";
@@ -20,6 +21,7 @@ import DashboardLayout from "./pages/Admin/DashboardLayout";
 import Admin from "./pages/Admin/Admin";
 import EditJob from './pages/Admin/EditJob';
 import { useEffect } from "react";
+import {action as registerAction} from "./pages/Register";
 
 
 export const checkDefaultTheme = () => {
@@ -30,6 +32,10 @@ export const checkDefaultTheme = () => {
 
 
 // checkDefaultTheme();
+
+// fetch("api/test")
+//   .then(res=>res.json())
+//   .then(data=>console.log(data))
 
 
 
@@ -46,6 +52,7 @@ const router = createBrowserRouter([
             {
                 path: "register",
                 element: <Register />,
+                action: registerAction,
             },
             {
                 path: "login",

@@ -1,25 +1,42 @@
-import { Link } from "react-router-dom";
+import { Link, redirect, useNavigation, Form } from "react-router-dom";
 import Wrapper from "../components/wrapper/RegistrationAndLogin.js";
 import Logo2 from "../components/Logo2.jsx";
-import { useState } from "react";
+import { toast } from "react-toastify";
+import axios from "axios";
+export const action=async({request})=>{
+    const formData=await request.formData();
+    const data=Object.fromEntries(formData)
+    console.log(data)
+    try {
+        const res = await axios.post("api/auth/register", data, {
+            withCredentials: true,
+        });
+        toast.success("Log in successfully!")
+        return redirect("/login");
+    } catch (err) {
+       console.error("Register error:", err.response?.data || err.message);
+       return { error: err.response?.data?.message || "Registration failed" };
+    }
+}
 
 
 const Register = () => {
 
-    const [formData,setFormData]=useState({
-        name:"",
-        email:"",
-        password:"",
-        confirmPassword:"",
-    })
+    // const [formData,setFormData]=useState({
+    //     name:"John Doe",
+    //     email:"john_green@email.com",
+    //     password:"abc123456",
+    //     confirmPassword:"abc123456",
+    // })
 
-
+    const navigation=useNavigation();
+    const isSubmitting=navigation.state === "submitting";
 
 
 
     return (
         <Wrapper>
-            <form action="/register" className="form">
+            <Form className="form" method="post">
                 <Logo2 />
                 <h3>Register</h3>
                 <div className="form-control">
@@ -53,7 +70,7 @@ const Register = () => {
                         Location
                     </label>
                     <input
-                        type="email"
+                        type="text"
                         className="form-input"
                         name="location"
                         id="location"
@@ -81,14 +98,16 @@ const Register = () => {
                     <input
                         type="password"
                         className="form-input"
-                        name="confirmpassword"
+                        name="confirmPassword"
                         id="confirmPassword"
                         placeholder="enter the confirmPassword"
                         required
                     />
                 </div>
                 <div className="submit">
-                    <button className="btn">Submit</button>
+                    <button className="btn" disabled={isSubmitting}>
+                        {isSubmitting ? "Submitting..." : "Submit"}
+                    </button>
                     <div id="link">
                         <span>Already have an account ? {""}</span>
                         <Link className="link" to="/login">
@@ -96,7 +115,7 @@ const Register = () => {
                         </Link>
                     </div>
                 </div>
-            </form>
+            </Form>
         </Wrapper>
     );
 };
