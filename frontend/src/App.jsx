@@ -3,12 +3,10 @@ import "./App.css";
 import {
     createBrowserRouter,
     // createRoutesFromElements,
-    Route,
     RouterProvider,
 } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import AddJob from "./pages/AddJob";
-import About from "./pages/About";
 import HomeLayout from "./pages/HomeLayout";
 import Error from "./pages/Error";
 import LandingPage from "./pages/LandingPage";
@@ -21,14 +19,9 @@ import DashboardLayout from "./pages/Admin/DashboardLayout";
 import Admin from "./pages/Admin/Admin";
 import EditJob from './pages/Admin/EditJob';
 import { useEffect } from "react";
-import {action as registerAction} from "./pages/Register";
-
-
-export const checkDefaultTheme = () => {
-    const isDarkTheme = localStorage.getItem("darkTheme") === "true";
-    document.body.classList.toggle("dark-theme", isDarkTheme);
-    return isDarkTheme;
-};
+import { action as registerAction } from "./components/actions/registerAction.js";
+import { checkDefaultTheme } from "./theme.js";
+import { action as loginAction } from "./components/actions/loginAction.js";
 
 
 // checkDefaultTheme();
@@ -57,6 +50,7 @@ const router = createBrowserRouter([
             {
                 path: "login",
                 element: <Login />,
+                action: loginAction,
             },
             {
                 path: "dashboard",

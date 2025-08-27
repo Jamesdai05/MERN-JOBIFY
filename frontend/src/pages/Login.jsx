@@ -1,11 +1,20 @@
+// import { toast } from "react-toastify";
 import Logo2 from "../components/Logo2.jsx";
 import Wrapper from "../components/wrapper/RegistrationAndLogin.js";
-import { Link } from "react-router-dom";
+import { Link,useNavigation,Form} from "react-router-dom";
+// import axios from "axios";
+
+
+
+
 
 const Login = () => {
+    const navigation=useNavigation()
+    const isSubmitting=navigation.state === "submitting";
+
   return (
       <Wrapper>
-          <form action="/register" className="form">
+          <Form className="form" method="post">
               <Logo2 />
               <h3>Login</h3>
               <div className="form-control">
@@ -35,7 +44,9 @@ const Login = () => {
                   />
               </div>
               <div className="submit">
-                  <button className="btn">Submit</button>
+                  <button className="btn" disabled={isSubmitting}>
+                    {isSubmitting ? "Submitting" : "Submit"}
+                  </button>
                   <div>
                       New User ?{" "}
                       <Link className="link" to="/register">
@@ -43,7 +54,7 @@ const Login = () => {
                       </Link>
                   </div>
               </div>
-          </form>
+          </Form>
       </Wrapper>
   );
 }
