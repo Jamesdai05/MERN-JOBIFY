@@ -23,6 +23,8 @@ import { action as registerAction } from "./components/actions/registerAction.js
 import { checkDefaultTheme } from "./theme.js";
 import { action as loginAction } from "./components/actions/loginAction.js";
 
+import {loader as dashboardLoader} from "./components/actions/dashboardLoader.js";
+
 
 // checkDefaultTheme();
 
@@ -54,6 +56,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "dashboard",
+                loader:dashboardLoader,
                 element: <DashboardLayout />,
                 children: [
                     {
