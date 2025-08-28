@@ -14,28 +14,27 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 import Stats from "./pages/Stats";
-import AllJobs from "./pages/Admin/AllJobs";
+import AdminAllJobs from "./pages/Admin/AllJobs";
+import PublicAllJobs from "./pages/AllJobs";
 import DashboardLayout from "./pages/Admin/DashboardLayout";
 import Admin from "./pages/Admin/Admin";
-import EditJob from './pages/Admin/EditJob';
+import EditJob from "./pages/Admin/EditJob";
 import { useEffect } from "react";
 import { action as registerAction } from "./components/actions/registerAction.js";
 import { checkDefaultTheme } from "./theme.js";
 import { action as loginAction } from "./components/actions/loginAction.js";
 
-import {loader as dashboardLoader} from "./components/actions/dashboardLoader.js";
-import {loader as allJobsLoader} from "./components/actions/allJobsLoader.js";
+import { loader as dashboardLoader } from "./components/actions/dashboardLoader.js";
+import { loader as adminAllJobsLoader } from "./pages/Admin/AllJobs";
+import { loader as publicAllJobsLoader } from "./pages/AllJobs";
 
-import {action as addJobAction }  from "./pages/AddJob.jsx";
-
+import { action as addJobAction } from "./pages/AddJob.jsx";
 
 // checkDefaultTheme();
 
 // fetch("api/test")
 //   .then(res=>res.json())
 //   .then(data=>console.log(data))
-
-
 
 const router = createBrowserRouter([
     {
@@ -58,6 +57,11 @@ const router = createBrowserRouter([
                 action: loginAction,
             },
             {
+                path: "all-jobs",
+                element: <PublicAllJobs />,
+                loader: publicAllJobsLoader,
+            },
+            {
                 path: "dashboard",
                 loader: dashboardLoader,
                 element: <DashboardLayout />,
@@ -73,7 +77,8 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "all-jobs",
-                        element: <AllJobs />,
+                        element: <AdminAllJobs />,
+                        loader: adminAllJobsLoader,
                     },
                     {
                         path: "admin",
@@ -93,15 +98,14 @@ const router = createBrowserRouter([
     },
 ]);
 
-
 const App = () => {
-  useEffect(() => {
-      checkDefaultTheme;
-  }, []);
-  return (
-    <div>
-      <RouterProvider router={router}/>
-    </div>
-  )
-}
-export default App
+    useEffect(() => {
+        checkDefaultTheme;
+    }, []);
+    return (
+        <div>
+            <RouterProvider router={router} />
+        </div>
+    );
+};
+export default App;

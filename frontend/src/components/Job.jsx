@@ -1,6 +1,6 @@
 import { FaBriefcase, FaCalendarAlt, FaLocationArrow } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import Wrapper from "../components/wrapper/Job.js";
+import Wrapper from "./wrapper/job.js";
 import JobInfo from "./JobInfo";
 import { useDashboardContext } from "../pages/Admin/DashboardLayout";
 

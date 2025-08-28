@@ -1,5 +1,17 @@
 import { Form, Link } from "react-router-dom";
 import JobsContainer from "../components/JobsContainer";
+import axios from "axios";
+import { toast } from "react-toastify";
+
+export const loader = async () => {
+    try {
+        const { data } = await axios.get("/api/jobs");
+        return { data };
+    } catch (err) {
+        toast.error(err?.response?.data?.message);
+        return { data: [] };
+    }
+};
 
 const AllJobs = () => {
     return (
@@ -22,7 +34,7 @@ const AllJobs = () => {
                             name="search"
                             id="search"
                             className="form-input"
-                            defaultValue=""
+                            // defaultValue=""
                         />
                     </div>
                     <div className="form-row">

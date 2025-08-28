@@ -54,6 +54,10 @@ const Wrapper=styled.div`
         a{
             text-decoration:none;
         }
+        .nav-link.active {
+            color:var(--primary-400);
+            text-decoration:underline;
+        }
     }
 
 `

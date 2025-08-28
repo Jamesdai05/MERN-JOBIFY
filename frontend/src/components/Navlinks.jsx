@@ -12,13 +12,21 @@ const Navlinks = ({isBigSidebar}) => {
     <div className="nav-links">
         {links.map(link=>{
             const {icon,text,path}=link
+            // use this as the prop to test the index
+            const isIndexRoute =
+                path === "." || path === "/dashboard";
             return (
-            <NavLink key={text} to={path} className="nav-link" onClick={isBigSidebar ? "" : toggleSidebar}>
-              <span className="icon">
-                  {icon}
-              </span>
-              {text}
-            </NavLink>)})
+                <NavLink
+                    key={text}
+                    to={path}
+                    className="nav-link"
+                    onClick={isBigSidebar ? "" : toggleSidebar}
+                    end={isIndexRoute}
+                >
+                    <span className="icon">{icon}</span>
+                    {text}
+                </NavLink>
+            );})
         }
     </div>
   )

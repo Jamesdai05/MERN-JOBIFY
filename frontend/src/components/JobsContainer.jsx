@@ -1,11 +1,14 @@
-import { useLoaderData } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
 import Job from "./Job";
-import Wrapper from "../components/wrapper/JobsContainer.js";
+import Wrapper from "./wrapper/jobContainer.js";
+import { useAllJobsContext } from "../pages/Admin/AllJobs.jsx";
 
 const JobsContainer = () => {
-    const jobs = useLoaderData();
+    // const { data } = useLoaderData() || { data: [] };
+    const {data}=useAllJobsContext() || {data:[]};
+    console.log("JobsContainer data:", data);
 
-    if (jobs.length === 0) {
+    if (!data || data.length === 0) {
         return (
             <Wrapper>
                 <h2>No jobs to display...</h2>
@@ -15,8 +18,11 @@ const JobsContainer = () => {
 
     return (
         <Wrapper>
+            <h5>
+                Search Jobs
+            </h5>
             <div className="jobs">
-                {jobs.map((job) => (
+                {data.map((job) => (
                     <Job key={job._id} job={job} />
                 ))}
             </div>

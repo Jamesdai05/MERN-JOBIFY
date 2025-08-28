@@ -36,7 +36,7 @@ const DashboardLayout = () => {
     const toggleSidebar = () => setShowSidebar((prev) => !prev);
 
     const logoutUser = async() => {
-        await axios.post("api/auth/logout");
+        await axios.post("/api/auth/logout");
         navigate("/");
         toast.success("Log out successfully!")
         // console.log("User log out!");
