@@ -25,6 +25,8 @@ import { action as loginAction } from "./components/actions/loginAction.js";
 
 import {loader as dashboardLoader} from "./components/actions/dashboardLoader.js";
 
+import {action as addJobAction }  from "./pages/AddJob.jsx";
+
 
 // checkDefaultTheme();
 
@@ -70,6 +72,7 @@ const router = createBrowserRouter([
                     {
                         path: "add-job",
                         element: <AddJob />,
+                        action: addJobAction,
                     },
                     {
                         path: "all-jobs",

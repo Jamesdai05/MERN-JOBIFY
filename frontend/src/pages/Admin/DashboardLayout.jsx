@@ -24,7 +24,7 @@ const DashboardLayout = () => {
     const [isDarkTheme, setIsDarkTheme] = useState(checkDefaultTheme());
 
 
-    console.log(data)
+    // console.log(data)
     const toggleTheme = () => {
         const updatedTheme = !isDarkTheme;
         setIsDarkTheme((prev) => !prev);
