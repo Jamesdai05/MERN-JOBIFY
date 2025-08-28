@@ -10,7 +10,7 @@ export const action=async({request})=>{
   const data=Object.fromEntries(formData);
   console.log(data);
   try {
-      await axios.post("api/jobs/add-job",data);
+      await axios.post("/api/jobs/add-job",data);
       toast.success("Job added successfully!");
       return redirect("/dashboard/all-jobs");
   }catch(err){

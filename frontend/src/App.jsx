@@ -24,6 +24,7 @@ import { checkDefaultTheme } from "./theme.js";
 import { action as loginAction } from "./components/actions/loginAction.js";
 
 import {loader as dashboardLoader} from "./components/actions/dashboardLoader.js";
+import {loader as allJobsLoader} from "./components/actions/allJobsLoader.js";
 
 import {action as addJobAction }  from "./pages/AddJob.jsx";
 
@@ -58,21 +59,17 @@ const router = createBrowserRouter([
             },
             {
                 path: "dashboard",
-                loader:dashboardLoader,
+                loader: dashboardLoader,
                 element: <DashboardLayout />,
                 children: [
                     {
                         index: true,
                         element: <AddJob />,
+                        action: addJobAction,
                     },
                     {
                         path: "stats",
                         element: <Stats />,
-                    },
-                    {
-                        path: "add-job",
-                        element: <AddJob />,
-                        action: addJobAction,
                     },
                     {
                         path: "all-jobs",
