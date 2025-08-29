@@ -5,7 +5,7 @@ import JobInfo from "./JobInfo";
 import { useDashboardContext } from "../pages/Admin/DashboardLayout";
 
 const Job = ({ job }) => {
-    const { position, company, jobLocation, jobStatus, jobType, createdAt, _id } = job;
+    const { position, company, location, jobStatus, jobType, createdAt, _id } = job;
     const { user } = useDashboardContext();
 
     const date = new Date(createdAt).toLocaleDateString();
@@ -21,14 +21,19 @@ const Job = ({ job }) => {
             </header>
             <div className="content">
                 <div className="content-center">
-                    <JobInfo icon={<FaLocationArrow />} text={jobLocation} />
+                    <JobInfo icon={<FaLocationArrow />} text={location} />
                     <JobInfo icon={<FaCalendarAlt />} text={date} />
                     <JobInfo icon={<FaBriefcase />} text={jobType} />
-                    <div className={`status ${jobStatus}`}>{jobStatus}</div>
+                    <div className={`status ${jobStatus}`}>
+                        <span>{jobStatus}</span>
+                    </div>
                 </div>
                 <footer>
                     <div className="actions">
-                        <Link to={`/dashboard/edit-job/${_id}`} className="btn edit-btn">
+                        <Link
+                            to={`/dashboard/edit-job/${_id}`}
+                            className="btn edit-btn"
+                        >
                             Edit
                         </Link>
                         <button className="btn delete-btn">Delete</button>

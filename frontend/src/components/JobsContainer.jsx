@@ -11,7 +11,7 @@ const JobsContainer = () => {
     if (!data || data.length === 0) {
         return (
             <Wrapper>
-                <h2>No jobs to display...</h2>
+                <h2>There is no jobs to display yet!...</h2>
             </Wrapper>
         );
     }
