@@ -1,5 +1,5 @@
 import Wrapper from "../components/wrapper/bigSideBar.js";
-import { useDashboardContext } from "../pages/Admin/DashboardLayout.jsx";
+import { useDashboardContext } from "../pages/DashboardLayout";
 import Logo from './Logo';
 import Navlinks from "./Navlinks.jsx";
 

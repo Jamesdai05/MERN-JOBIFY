@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 export const action=async({request})=>{
   const formData=await request.formData();
   const data=Object.fromEntries(formData);
-  console.log(data);
+//   console.log(data);
   try {
       await axios.post("/api/jobs/add-job",data);
       toast.success("Job added successfully!");
@@ -23,6 +23,9 @@ export const action=async({request})=>{
           errors.forEach(error => toast.error(error));
           return null;
       }
+      toast.error(
+          err.response?.data?.message || err.message || "Something went wrong"
+      );
       return null;
   }
 }
@@ -71,7 +74,7 @@ const AddJob = () => {
                           className="form-input"
                           name="location"
                           id="location"
-                          placeholder="enter the company"
+                          placeholder="enter the location"
                           defaultValue={user.location}
                           required
                       />

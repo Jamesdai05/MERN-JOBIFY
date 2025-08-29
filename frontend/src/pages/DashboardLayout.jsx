@@ -1,19 +1,15 @@
 import { Outlet, useLoaderData, useNavigate } from "react-router-dom";
-import Wrapper from "../../components/wrapper/dashboard.js";
-import Sidebar from "../../components/Sidebar.jsx";
-import BigSidebar from "../../components/BigSidebar.jsx";
-import Navbar from "../../components/Navbar.jsx";
-import { useContext, useState,createContext} from "react";
-import { checkDefaultTheme } from "../../theme.js";
+import Wrapper from "../components/wrapper/dashboard.js";
+import Sidebar from "../components/Sidebar.jsx";
+import BigSidebar from "../components/BigSidebar.jsx";
+import Navbar from "../components/Navbar.jsx";
+import { useContext, useState, createContext } from "react";
+import { checkDefaultTheme } from "../theme.js";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-
-
 // const DarkModeEnabled = checkDefaultTheme();
-const DashboarContext=createContext()
-
-
+const DashboarContext = createContext();
 
 const DashboardLayout = () => {
     const data = useLoaderData();
@@ -40,8 +36,6 @@ const DashboardLayout = () => {
         toast.success("Log out successfully!");
         // console.log("User log out!");
     };
-
-
 
     return (
         <DashboarContext.Provider
@@ -70,5 +64,5 @@ const DashboardLayout = () => {
     );
 };
 
-export const useDashboardContext =()=> useContext(DashboarContext)
+export const useDashboardContext = () => useContext(DashboarContext);
 export default DashboardLayout;

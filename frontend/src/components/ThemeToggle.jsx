@@ -1,4 +1,4 @@
-import { useDashboardContext } from "../pages/Admin/DashboardLayout.jsx";
+import { useDashboardContext } from "../pages/DashboardLayout.jsx";
 import { FaMoon, FaSun } from "react-icons/fa6";
 import Wrapper from "./wrapper/themeToggle.js";
 

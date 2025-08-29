@@ -1,11 +1,11 @@
 import Wrapper from "./wrapper/sidebar.js"
 import Logo from './Logo';
-import { useDashboardContext } from "../pages/Admin/DashboardLayout.jsx";
 import { FaTimes } from "react-icons/fa";
 // import links from "../utils/links.jsx";
 import { NavLink } from "react-router-dom";
 // import { useState } from "react";
 import Navlinks from './Navlinks';
+import { useDashboardContext } from "../pages/DashboardLayout";
 
 
 const Sidebar = () => {

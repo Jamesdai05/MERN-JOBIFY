@@ -2,10 +2,10 @@
 import Logo from "./Logo.jsx";
 // import styled from "styled-components";
 import { FaAlignLeft, FaBars, FaTimes } from "react-icons/fa";
-import { useDashboardContext } from "../pages/Admin/DashboardLayout.jsx";
 import ThemeToggle from "./ThemeToggle.jsx";
 import LogoutContainer from "./LogoutContainer.jsx";
 import Wrapper from "./wrapper/navbar.js";
+import { useDashboardContext } from "../pages/DashboardLayout";
 
 
 

@@ -14,23 +14,23 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 import Stats from "./pages/Stats";
-import AdminAllJobs from "./pages/Admin/AllJobs";
+import AdminAllJobs from "./pages/AllJobs.jsx";
 import PublicAllJobs from "./pages/AllJobs";
-import DashboardLayout from "./pages/Admin/DashboardLayout";
+import DashboardLayout from "./pages/DashboardLayout.jsx";
 import Admin from "./pages/Admin/Admin";
-import EditJob from "./pages/Admin/EditJob";
+import EditJob from "./pages/EditJob.jsx";
 import { useEffect } from "react";
 import { action as registerAction } from "./components/actions/registerAction.js";
 import { checkDefaultTheme } from "./theme.js";
 import { action as loginAction } from "./components/actions/loginAction.js";
 
 import { loader as dashboardLoader } from "./components/actions/dashboardLoader.js";
-import { loader as adminAllJobsLoader } from "./pages/Admin/AllJobs";
+import { loader as adminAllJobsLoader } from "./pages/AllJobs.jsx";
 import { loader as publicAllJobsLoader } from "./pages/AllJobs";
 
 import { action as addJobAction } from "./pages/AddJob";
-import {loader as editJobLoader} from "./pages/Admin/EditJob";
-import { action as editJobAction } from "./pages/Admin/EditJob";
+import { loader as editJobLoader } from "./pages/EditJob.jsx";
+import { action as editJobAction } from "./pages/EditJob.jsx";
 
 // checkDefaultTheme();
 
@@ -94,7 +94,7 @@ const router = createBrowserRouter([
                         path: "edit-job/:id",
                         element: <EditJob />,
                         loader: editJobLoader,
-                        action:editJobAction,
+                        action: editJobAction,
                     },
                 ],
             },
