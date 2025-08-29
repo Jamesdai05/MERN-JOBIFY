@@ -1,16 +1,33 @@
 import { FaUserCircle, FaCaretDown } from "react-icons/fa";
 import Wrapper from "../components/wrapper/logoutContainer.js"
-import { useState } from "react";
-import { useDashboardContext } from "../pages/Admin/DashboardLayout.jsx";
+import { useEffect, useRef, useState } from "react";
+import { useDashboardContext } from "../pages/Admin/DashboardLayout";
+
 
 const LogoutContainer = () => {
     const [showLogout, setShowLogout] = useState(false);
     const { user, logoutUser } = useDashboardContext();
+    const containerRef=useRef(null);
 
-    const toggleLogoutButton=()=>setShowLogout(prev=>!prev);
+    const toggleLogoutButton = () => setShowLogout((prev) => !prev);
+
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (
+                containerRef.current &&
+                !containerRef.current.contains(e.target)
+            ) {
+                setShowLogout(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () =>
+            document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
 
     return (
-        <Wrapper>
+        <Wrapper ref={containerRef}>
             <button
                 type="button"
                 className="btn logout-btn"

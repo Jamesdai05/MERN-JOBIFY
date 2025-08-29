@@ -28,7 +28,9 @@ import { loader as dashboardLoader } from "./components/actions/dashboardLoader.
 import { loader as adminAllJobsLoader } from "./pages/Admin/AllJobs";
 import { loader as publicAllJobsLoader } from "./pages/AllJobs";
 
-import { action as addJobAction } from "./pages/AddJob.jsx";
+import { action as addJobAction } from "./pages/AddJob";
+import {loader as editJobLoader} from "./pages/Admin/EditJob";
+import { action as editJobAction } from "./pages/Admin/EditJob";
 
 // checkDefaultTheme();
 
@@ -91,6 +93,8 @@ const router = createBrowserRouter([
                     {
                         path: "edit-job/:id",
                         element: <EditJob />,
+                        loader: editJobLoader,
+                        action:editJobAction,
                     },
                 ],
             },

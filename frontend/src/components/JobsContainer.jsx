@@ -6,7 +6,7 @@ import { useAllJobsContext } from "../pages/Admin/AllJobs.jsx";
 const JobsContainer = () => {
     // const { data } = useLoaderData() || { data: [] };
     const {data}=useAllJobsContext() || {data:[]};
-    console.log("JobsContainer data:", data);
+    // console.log("JobsContainer data:", data);
 
     if (!data || data.length === 0) {
         return (

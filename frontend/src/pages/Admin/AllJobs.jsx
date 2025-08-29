@@ -1,9 +1,10 @@
 import axios from "axios";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useOutletContext } from "react-router-dom";
 import { toast } from "react-toastify";
 import JobsContainer from '../../components/JobsContainer';
 import SearchContainer from "../../components/SearchContainer.jsx";
 import { createContext, useContext } from "react";
+
 
 
 export const loader=async()=>{
@@ -20,7 +21,8 @@ export const loader=async()=>{
 const AllJobsContext=createContext()
 const AllJobs = () => {
   const {data}=useLoaderData();
-  console.log(data)
+  const {user}=useOutletContext();
+  console.log(user)
 
   if (data instanceof Error) {
       return <div>Error loading jobs. Please try again.</div>;

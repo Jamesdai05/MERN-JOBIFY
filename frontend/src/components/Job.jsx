@@ -1,19 +1,24 @@
 import { FaBriefcase, FaCalendarAlt, FaLocationArrow } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Wrapper from "./wrapper/job.js";
 import JobInfo from "./JobInfo";
 import { useDashboardContext } from "../pages/Admin/DashboardLayout";
 
+
+
+
+
 const Job = ({ job }) => {
+    // const {data}=useLoaderData()
     const { position, company, location, jobStatus, jobType, createdAt, _id } = job;
-    const { user } = useDashboardContext();
+    // const { user } = useDashboardContext();
 
     const date = new Date(createdAt).toLocaleDateString();
-
+    // console.log(data)
     return (
         <Wrapper>
             <header>
-                <div className="main-icon">{company.charAt(0)}</div>
+                <div className="main-icon">{company.charAt(0).toUpperCase()}</div>
                 <div className="info">
                     <h5>{position}</h5>
                     <p>{company}</p>
