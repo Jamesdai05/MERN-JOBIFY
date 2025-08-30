@@ -346,6 +346,11 @@ button:disabled {
   color: #d66a6a;
 }
 
+.on-going{
+  background:#67C090;
+  color:white;
+}
+
 
 /* navbar */
 

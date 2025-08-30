@@ -64,7 +64,33 @@ const Wrapper=styled.article`
         border-radius:3px;
         text-transform:capitalize;
     }
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .modal {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        width: 400px;
+        display:flex;
+        flex-direction:column;
+        text-align:center;
+        gap:0.8rem;
+    }
 
+    .modal-actions{
+        display:flex;
+        flex-direction:column;
+        gap:0.8em;
+    }
     footer .actions{
         display:flex;
         gap:1rem;

@@ -25,12 +25,13 @@ import { checkDefaultTheme } from "./theme.js";
 import { action as loginAction } from "./components/actions/loginAction.js";
 
 import { loader as dashboardLoader } from "./components/actions/dashboardLoader.js";
-import { loader as adminAllJobsLoader } from "./pages/AllJobs.jsx";
-import { loader as publicAllJobsLoader } from "./pages/AllJobs";
+import { loader as adminAllJobsLoader } from "./pages/AllJobs";
+// import { loader as publicAllJobsLoader } from "./pages/AllJobs";
 
 import { action as addJobAction } from "./pages/AddJob";
-import { loader as editJobLoader } from "./pages/EditJob.jsx";
-import { action as editJobAction } from "./pages/EditJob.jsx";
+import { loader as editJobLoader } from "./pages/EditJob";
+import { action as editJobAction } from "./pages/EditJob";
+import { action as deleteJobAction } from "./pages/DeleteJob";
 
 // checkDefaultTheme();
 
@@ -58,11 +59,11 @@ const router = createBrowserRouter([
                 element: <Login />,
                 action: loginAction,
             },
-            {
-                path: "all-jobs",
-                element: <PublicAllJobs />,
-                loader: publicAllJobsLoader,
-            },
+            // {
+            //     path: "all-jobs",
+            //     element: <PublicAllJobs />,
+            //     loader: publicAllJobsLoader,
+            // },
             {
                 path: "dashboard",
                 loader: dashboardLoader,
@@ -96,6 +97,10 @@ const router = createBrowserRouter([
                         loader: editJobLoader,
                         action: editJobAction,
                     },
+                    {
+                        path: "delete/:id",
+                        action: deleteJobAction,
+                    },
                 ],
             },
         ],
@@ -104,7 +109,7 @@ const router = createBrowserRouter([
 
 const App = () => {
     useEffect(() => {
-        checkDefaultTheme;
+        checkDefaultTheme();
     }, []);
     return (
         <div>

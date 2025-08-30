@@ -8,8 +8,8 @@ export const loader = async ({ params }) => {
     // console.log(params)
     try {
         const { data } = await axios.get(`/api/jobs/${params.id}`);
-        // console.log(data);
-        return data;
+        console.log(data);
+        return data.job;
     } catch (err) {
         toast.error(err?.response?.data?.message || "Failed to fetch the job!");
         return redirect("/dashboard/all-jobs");
@@ -43,14 +43,12 @@ export const action = async ({ request, params }) => {
 };
 
 const EditJob = () => {
-    // const {job} = useLoaderData()
-    // console.log(job);
-    // console.log("🔥 EditJob component is rendering!");
+
     const navigation = useNavigation();
     const isSubmitting = navigation.state === "submitting";
 
     const job = useLoaderData();
-    // console.log("Raw loader data:", job);
+    console.log("Raw loader data:", job);
 
     if (!job) {
         return <div>Loading...</div>;
