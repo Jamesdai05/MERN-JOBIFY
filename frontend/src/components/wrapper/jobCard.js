@@ -77,6 +77,7 @@ const Wrapper=styled.article`
     }
     .modal {
         background: white;
+        color:var(--red-dark);
         padding: 2rem;
         border-radius: 1rem;
         width: 400px;

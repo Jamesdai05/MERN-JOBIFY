@@ -6,13 +6,14 @@ import { useDashboardContext } from '../pages/DashboardLayout';
 
 const Navlinks = ({isBigSidebar}) => {
   const {toggleSidebar,user}=useDashboardContext()
-  const {role}=user;
 
   return (
     <div className="nav-links">
         {links.map(link=>{
             const {icon,text,path}=link
             // use this as the prop to test the index
+            const { role } = user;
+            if (path === "admin" && role !== "admin") return;
             const isIndexRoute =
                 path === "." || path === "/dashboard";
             return (

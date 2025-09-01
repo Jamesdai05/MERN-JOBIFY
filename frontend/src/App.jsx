@@ -14,11 +14,11 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 import Stats from "./pages/Stats";
-import AdminAllJobs from "./pages/AllJobs.jsx";
+import AdminAllJobs from "./pages/AllJobs";
 import PublicAllJobs from "./pages/AllJobs";
-import DashboardLayout from "./pages/DashboardLayout.jsx";
+import DashboardLayout from "./pages/DashboardLayout";
 import Admin from "./pages/Admin/Admin";
-import EditJob from "./pages/EditJob.jsx";
+import EditJob from "./pages/EditJob";
 import { useEffect } from "react";
 import { action as registerAction } from "./components/actions/registerAction.js";
 import { checkDefaultTheme } from "./theme.js";
@@ -33,6 +33,7 @@ import { loader as editJobLoader } from "./pages/EditJob";
 import { action as editJobAction } from "./pages/EditJob";
 import { action as deleteJobAction } from "./pages/DeleteJob";
 
+import { loader as adminLoader } from "./pages/Admin/Admin";
 // checkDefaultTheme();
 
 // fetch("api/test")
@@ -86,9 +87,10 @@ const router = createBrowserRouter([
                     {
                         path: "admin",
                         element: <Admin />,
+                        loader:adminLoader,
                     },
                     {
-                        path: "profile",
+                        path: "users/profile",
                         element: <Profile />,
                     },
                     {
