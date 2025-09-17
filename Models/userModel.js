@@ -27,7 +27,14 @@ const userSchema=new Schema({
     location:{
       type:String,
       default:"Singapore",
-    }
+    },
+    avartar: {
+      type: String,
+      default: "uploads/default.jpg", // Default image path
+    },
+    avartarId: {
+      type: String,
+    },
 },{timestamps:true})
 
 
