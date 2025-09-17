@@ -9,7 +9,7 @@ const registrationValidator=Joi.object({
     password:Joi.string().min(6).label("Password").required(),
     location:Joi.string().label("Location").required(),
     confirmPassword:Joi.string().equal(Joi.ref("password")).required()
-        .label('Confirm password')
+        .label('ConfirmPassword')
         .messages({ 'any.only': '{{#label}} does not match' }) //to pop a message during development.
 })
 

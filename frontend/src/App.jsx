@@ -34,6 +34,7 @@ import { action as editJobAction } from "./pages/EditJob";
 import { action as deleteJobAction } from "./pages/DeleteJob";
 
 import { loader as adminLoader } from "./pages/Admin/Admin";
+import { action as profileAction } from "./pages/Profile";
 // checkDefaultTheme();
 
 // fetch("api/test")
@@ -92,6 +93,7 @@ const router = createBrowserRouter([
                     {
                         path: "users/profile",
                         element: <Profile />,
+                        action: profileAction,
                     },
                     {
                         path: "edit-job/:id",

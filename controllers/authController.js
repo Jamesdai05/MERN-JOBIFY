@@ -3,12 +3,16 @@ import generationToken from "../utils/tokenGeneration.js";
 
 
 const registration=async(req,res)=>{
+
     const {name,email,password,location}=req.body;
 
     const isUserRegistered=await User.findOne({email});
 
     if(isUserRegistered){
-        return res.status(400).json({message:"Email already exists"});
+        return res.status(400).json({
+        message: "Validation error",
+        details: [{ field: "email", message: "Email already exists" }]
+      });
     }
     const user=await User.create({
         name,
@@ -38,7 +42,7 @@ const login=async(req,res)=>{
             id:user._id,
         })
     }
-    res.status(401).json({message:"Invalid credentials!Please try again."})
+    res.status(401).json({message:"Invalid credentials! Please try again."})
 }
 
 

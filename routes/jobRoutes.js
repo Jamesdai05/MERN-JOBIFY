@@ -29,7 +29,7 @@ router.get("/all-jobs",protectRoute,getAllJobs)
 // @route  GET /api/jobs/:id
 // @access User/private
 
-router.get("/:id",idParamsValidator(idValidator),protectRoute,getAJobById)
+router.get("/:id",protectRoute,idParamsValidator(idValidator),getAJobById)
 
 
 // @desc   add a new job
@@ -37,6 +37,7 @@ router.get("/:id",idParamsValidator(idValidator),protectRoute,getAJobById)
 // @access User/private
 
 router.post("/add-job",protectRoute,validator(jobValidator),addANewJob)
+// router.post("/add-job",addANewJob)
 
 // @desc   update a job
 // @route  PUT /api/jobs/edit/:id

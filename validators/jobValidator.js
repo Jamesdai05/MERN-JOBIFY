@@ -6,10 +6,9 @@ import { JOB_STATUS, JOB_TYPE } from "../utils/constants.js";
 const jobValidator=Joi.object({
     position: Joi.string().label("Position").required(),
     company:Joi.string().label("Company").required(),
-    jobType: Joi.string().valid(...Object.values(JOB_TYPE)).label("Job Type"),
-    jobStatus:Joi.string().label("Job Status").valid(...Object.values(JOB_STATUS)),
+    jobType: Joi.string().valid(...Object.values(JOB_TYPE)).label("Job Type").required(),
+    jobStatus:Joi.string().label("Job Status").valid(...Object.values(JOB_STATUS)).required(),
     location:Joi.string().default('Singapore').label('Location').required(),
-    role:Joi.string().label('Role').valid('user','admin'),
 })
 
 const updateJobValidator=Joi.object({
@@ -18,7 +17,7 @@ const updateJobValidator=Joi.object({
     jobType: Joi.string().valid(...Object.values(JOB_TYPE)).label("Job Type").optional(),
     jobStatus:Joi.string().label("Job Status").valid(...Object.values(JOB_STATUS)).optional(),
     location:Joi.string().default('Singapore').label('Location').required().optional(),
-    role:Joi.string().label('Role').valid('user','admin').optional(),
+    // role:Joi.string().label('Role').valid('user','admin').optional(),
 }).min(1);//at least update one field
 
 

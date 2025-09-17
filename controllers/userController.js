@@ -6,7 +6,7 @@ const getUserProfile=async(req,res)=>{
     const user=await User.findById(req.user._id);
 
     if(user){
-        res.status(200).json({
+        return res.status(200).json({
             // id:user._id,
             name:user.name,
             email:user.email,
@@ -15,7 +15,7 @@ const getUserProfile=async(req,res)=>{
         })
     }
 
-    res.status(404).json("User does not exists!Please try again.");
+    res.status(404).json({message:"User does not exists!Please try again."});
 }
 
 

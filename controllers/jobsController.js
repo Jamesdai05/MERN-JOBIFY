@@ -5,9 +5,9 @@ import Job from '../Models/jobModel.js';
 
 
 const getAllJobs=async(req,res)=>{
-   const jobs= await Job.find({});
-//    console.log(jobs)
-   return res.json(jobs);
+   const userId = req.user.id;
+   const jobs = await Job.find({ createdBy: userId });
+   return res.json({jobs});
 }
 
 const getAJobById=async(req,res)=>{
@@ -21,30 +21,23 @@ const getAJobById=async(req,res)=>{
             //check authorization to view the job
             return res.status(403).json({ message: "Not authorized to view this job!" });
         }
-        return res.json(job);
+        return res.json({job});
     }else{
-        res.status(404).josn({message:"Job does not exists!"});
+        res.status(404).json({message:"Job does not exists!"});
     }
 }
 
 
 const addANewJob=async(req,res)=>{
-    const {position,company,jobType,location,jobStatus}=req.body;
-    // if(!position || !company){
-    //     return res.status(400).json({error:"Please fill in the required fields!"});
-    // }
-    const newJob=new Job({
-        position,
-        company,
-        jobType,
-        location,
-        jobStatus,
-        createdBy:req.user?._id
-    });
-    const createdJob=await newJob.save();
-    return res.status(201).json({
-        message:"Job created successfully!",
-        job:createdJob})
+     console.log("Route hitted!Body:",req.body);
+     const userId=req.user.id;
+
+     const job= await Job.create({
+        ...req.body,
+        createdBy:userId,
+     })
+
+    res.status(201).json({job});
 }
 
 
