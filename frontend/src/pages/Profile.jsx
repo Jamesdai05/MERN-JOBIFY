@@ -3,18 +3,50 @@ import Wrapper from "../components/wrapper/dashboardForm.js";
 import { Form, useNavigation, useOutletContext } from "react-router-dom";
 import { toast } from "react-toastify";
 
+export const action=async({request})=>{
+    const formData=await request.formData();
+    const data=Object.fromEntries(formData);
+    console.log(data);
+
+    // to handle file uploading, we need to control the size of file in the front end.
+    // and we need to use multipart/form-data to send the data to backend.
+    // so we need to create a new formData object and append the data to it.
+
+    const file = formData.get("avatar");
+    if (file && file.size > 512000) { // 0.5MB = 512000 bytes
+        toast.error("File size too large. Max size is 0.5MB.");
+        return null;
+    }
+
+    try{
+        await axios.patch("/api/users/profile/edit",formData);
+        toast.success("Profile updated successfully!");
+    }catch(err){
+        console.error("Profile update error:", err.response?.data || err.message);
+        if (err.response?.data?.details) {
+            const errors = Array.isArray(err.response.data.details)
+                ? err.response.data.details
+                : [err.response.data.details];
+            errors.forEach(error => toast.error(error));
+            return null;
+        }
+        toast.error("failed to update profile");
+
+    }
+    return null; //stay on the same page
+}
+
 
 const Profile = () => {
-  const {user}=useOutletContext();
-  const {name,email,location}=user;
-  const navigation=useNavigation();
+    const {user}=useOutletContext();
+    const {name,email,location}=user;
+    const navigation=useNavigation();
 
-  console.log(user)
-  const isSubmmitting=navigation.state === "submitting"
+    const isSubmmitting=navigation.state === "submitting"
 
-  return (
+    return (
       <Wrapper>
-          <Form method="post" className="form">
+          <Form method="post" className="form" encType="multipart/form-data" >
               <h4 className="form-title">Profile</h4>
               <div className="form-center">
                   <div className="form-control">
@@ -24,7 +56,7 @@ const Profile = () => {
                       <input
                           type="file"
                           className="form-input"
-                          name="image"
+                          name="avatar"
                           id="avatar"
                           accept="image/*"
                       />
@@ -79,6 +111,6 @@ const Profile = () => {
               </div>
           </Form>
       </Wrapper>
-  );
+    );
 }
 export default Profile
