@@ -16,9 +16,14 @@ export const action=async({request})=>{
     }
     // console.log(data);
     try {
-        await axios.post("api/auth/login",data,{
+        const response=await axios.post("api/auth/login",data,{
             withCredentials:true,
         })
+        const user=response.data;
+        // console.log("Login successful:", user);
+
+        localStorage.setItem("user", JSON.stringify(user));
+
         toast.success("Log in successfully!")
         return redirect("/dashboard");
 
@@ -36,7 +41,7 @@ export const action=async({request})=>{
 
         // Handle general errors
         const errorMessage =
-            err.response?.data?.message || "Registration failed";
+            err.response?.data?.message || "Login failed";
         toast.error(errorMessage);
         return null;
     }

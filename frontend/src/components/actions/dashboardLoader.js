@@ -7,9 +7,21 @@ export const loader=async()=>{
     try {
         const {data}=await axios.get("api/users/profile")
 
-        return data;
+        // return data;
+        localStorage.setItem("user", JSON.stringify(data));
+        return {
+            name: data.name ?? "User",
+            avatar: data.avatar ?? null,
+            email: data.email ?? "",
+            role: data.role ?? "user",
+        };
     } catch (err) {
-        toast.error(err.message);
-        return redirect("/");
+        const savedUser = localStorage.getItem("user");
+        if (savedUser) {
+            return JSON.parse(savedUser);
+        }
+        toast.error(err.response?.data?.message || err.message);
+        // return redirect("/");
+        return redirect("/login");
     }
 }

@@ -39,6 +39,7 @@ const DashboardLayout = () => {
             console.error("Logout failed:", err);
             toast.error("Logout failed. Please try again.");
         } finally {
+            localStorage.removeItem("user");
             navigate("/");
         }
         // console.log("User log out!");
