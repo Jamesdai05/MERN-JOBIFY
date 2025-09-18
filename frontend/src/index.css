@@ -186,6 +186,14 @@ ul {
   display: block;
   object-fit: cover;
 }
+
+.img-avtar {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto;
+}
 /* buttons */
 
 .btn {
