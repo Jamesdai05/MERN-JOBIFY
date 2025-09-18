@@ -43,7 +43,7 @@ const LogoutContainer = () => {
                 aria-expanded={showLogout}
             >
                 {user?.avatar ? (
-                    <img src={user.avatar} alt="avatar" className="img-avtar" />
+                    <img src={user.avatar} alt="avatar" className="img-avatar" />
                 ) : (
                     <FaUserCircle />
                 )}

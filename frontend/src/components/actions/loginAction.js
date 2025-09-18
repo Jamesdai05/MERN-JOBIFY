@@ -29,7 +29,6 @@ export const action=async({request})=>{
 
     } catch (err) {
         console.error("Login error:", err.response?.data || err.message);
-        console.log(err);
         // Handle validation errors from backend
         if (err.response?.data?.details) {
             const errors = Array.isArray(err.response.data.details)
