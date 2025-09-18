@@ -21,9 +21,17 @@ const LogoutContainer = () => {
                 setShowLogout(false);
             }
         };
+        const handleEscapeKey = (e) => {
+            if (e.key === "Escape") {
+                setShowLogout(false);
+            }
+        };
         document.addEventListener("mousedown", handleClickOutside);
-        return () =>
+        document.addEventListener("keydown", handleEscapeKey);
+        return () =>{
             document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("keydown", handleEscapeKey);
+        };
     }, []);
 
     return (
@@ -42,7 +50,7 @@ const LogoutContainer = () => {
                 {user?.name || "user"}
                 <FaCaretDown />
             </button>
-            <div className={showLogout ? "dropdown show-dropdown" : "dropdown"}>
+            {showLogout && <div className={showLogout ? "dropdown show-dropdown" : "dropdown"}>
                 <button
                     type="button"
                     className="dropdown-btn"
@@ -50,7 +58,7 @@ const LogoutContainer = () => {
                 >
                     logout
                 </button>
-            </div>
+            </div>}
         </Wrapper>
     );
 };
