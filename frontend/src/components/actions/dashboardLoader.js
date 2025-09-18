@@ -5,7 +5,9 @@ import { toast } from "react-toastify";
 
 export const loader=async()=>{
     try {
-        const {data}=await axios.get("api/users/profile")
+        const {data}=await axios.get("/api/users/profile",{
+            withCredentials:true,
+        });
 
         // return data;
         localStorage.setItem("user", JSON.stringify(data));

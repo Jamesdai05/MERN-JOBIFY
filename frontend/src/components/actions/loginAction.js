@@ -16,7 +16,7 @@ export const action=async({request})=>{
     }
     // console.log(data);
     try {
-        const response=await axios.post("api/auth/login",data,{
+        const response=await axios.post("/api/auth/login",data,{
             withCredentials:true,
         })
         const user=response.data;

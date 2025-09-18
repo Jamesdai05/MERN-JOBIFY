@@ -28,7 +28,7 @@ export const action = async ({ request }) => {
 
     // console.log(data);
     try {
-        await axios.post("api/auth/register", data, {
+        await axios.post("/api/auth/register", data, {
             withCredentials: true,
         });
         toast.success("Registration is successfully!");
