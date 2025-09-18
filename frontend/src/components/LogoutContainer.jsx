@@ -34,7 +34,7 @@ const LogoutContainer = () => {
                 onClick={toggleLogoutButton}
             >
                 {user.avatar ? (
-                    <img src={user.avatar} alt="avatar" className="img-avt" />
+                    <img src={user.avatar} alt="avatar" className="img" />
                 ) : (
                     <FaUserCircle />
                 )}

@@ -28,11 +28,11 @@ const userSchema=new Schema({
       type:String,
       default:"Singapore",
     },
-    avartar: {
+    avatar: {
       type: String,
       default: "uploads/default.jpg", // Default image path
     },
-    avartarId: {
+    avatarId: {
       type: String,
     },
 },{timestamps:true})

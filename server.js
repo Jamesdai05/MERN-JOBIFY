@@ -9,10 +9,18 @@ import userRouter from "./routes/userRoutes.js";
 import {notFound,errorHandler} from "./middleWare/errorMiddleware.js";
 import connectDB from "./utils/DBconnect.js";
 import cookieParser from "cookie-parser";
+import { v2 as cloudinary } from 'cloudinary';
 
 const app=express();
 
 dotenv.config()
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_CLOUD_API_KEY,
+  api_secret: process.env.CLOUDINARY_CLOUD_API_SECRET,
+  secure: true
+});
 
 const port= process.env.PORT || 4000
 
