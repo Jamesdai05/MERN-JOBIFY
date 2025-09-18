@@ -9,7 +9,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 // const DarkModeEnabled = checkDefaultTheme();
-const DashboarContext = createContext();
+const DashboardContext = createContext();
 
 const DashboardLayout = () => {
     const data = useLoaderData();
@@ -21,24 +21,31 @@ const DashboardLayout = () => {
 
     // console.log(data)
     const toggleTheme = () => {
-        const updatedTheme = !isDarkTheme;
-        setIsDarkTheme((prev) => !prev);
+        setIsDarkTheme((prev) => {
+            const updatedTheme = !prev;
+            localStorage.setItem("darkTheme", updatedTheme);
+            return updatedTheme;
+        });
         console.log("Toggle Theme");
-
-        localStorage.setItem("darkTheme", updatedTheme);
     };
 
     const toggleSidebar = () => setShowSidebar((prev) => !prev);
 
     const logoutUser = async () => {
-        await axios.post("/api/auth/logout");
-        navigate("/");
-        toast.success("Log out successfully!");
+        try {
+            await axios.post("/api/auth/logout");
+            toast.success("Log out successfully!");
+        } catch (err) {
+            console.error("Logout failed:", err);
+            toast.error("Logout failed. Please try again.");
+        } finally {
+            navigate("/");
+        }
         // console.log("User log out!");
     };
 
     return (
-        <DashboarContext.Provider
+        <DashboardContext.Provider
             value={{
                 user,
                 showSidebar,
@@ -60,9 +67,9 @@ const DashboardLayout = () => {
                     </div>
                 </main>
             </Wrapper>
-        </DashboarContext.Provider>
+        </DashboardContext.Provider>
     );
 };
 
-export const useDashboardContext = () => useContext(DashboarContext);
+export const useDashboardContext = () => useContext(DashboardContext);
 export default DashboardLayout;

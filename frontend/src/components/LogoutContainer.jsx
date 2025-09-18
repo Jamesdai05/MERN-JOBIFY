@@ -32,13 +32,14 @@ const LogoutContainer = () => {
                 type="button"
                 className="btn logout-btn"
                 onClick={toggleLogoutButton}
+                aria-expanded={showLogout}
             >
-                {user.avatar ? (
-                    <img src={user.avatar} alt="avatar" className="img" />
+                {user?.avatar ? (
+                    <img src={user.avatar} alt="avatar" className="img-avtar" />
                 ) : (
                     <FaUserCircle />
                 )}
-                {user?.name}
+                {user?.name || "user"}
                 <FaCaretDown />
             </button>
             <div className={showLogout ? "dropdown show-dropdown" : "dropdown"}>
