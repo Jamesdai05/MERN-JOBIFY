@@ -7,6 +7,11 @@ export const action = async ({ request }) => {
     const formData = await request.formData();
     // const data = Object.fromEntries(formData);
     // console.log(data);
+    // const {email,location,name}=data
+
+    // if(!email || !location || !name){
+    //     toast.info("Please fill out all the fields!")
+    // }
 
     // to handle file uploading, we need to control the size of file in the front end.
     // and we need to use multipart/form-data to send the data to backend.
@@ -39,6 +44,8 @@ export const action = async ({ request }) => {
             console.error("Invalid server response:", data);
             return null;
         }
+
+        // if()
 
         toast.success("Profile updated successfully!");
         localStorage.setItem("user", JSON.stringify(data.user));
