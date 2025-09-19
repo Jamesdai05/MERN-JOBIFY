@@ -5,8 +5,8 @@ import { toast } from "react-toastify";
 
 export const action = async ({ request }) => {
     const formData = await request.formData();
-    const data = Object.fromEntries(formData);
-    console.log(data);
+    // const data = Object.fromEntries(formData);
+    // console.log(data);
 
     // to handle file uploading, we need to control the size of file in the front end.
     // and we need to use multipart/form-data to send the data to backend.
@@ -46,7 +46,7 @@ export const action = async ({ request }) => {
     } catch (err) {
         console.error(
             "Profile update error:",
-            err.response?.data || err.message
+            err.response?.data?.message || err.message
         );
         if (err.response?.data?.details) {
             const errors = Array.isArray(err.response.data.details)
@@ -55,7 +55,7 @@ export const action = async ({ request }) => {
             errors.forEach((error) => toast.error(error));
             return null;
         }
-        toast.error("failed to update profile");
+        toast.error(err.response?.data?.message || "failed to update profile");
     }
     return null; //stay on the same page
 };

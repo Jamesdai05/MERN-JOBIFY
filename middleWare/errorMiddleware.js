@@ -45,7 +45,7 @@ class BadRequestError extends Error {
   constructor(message) {
     super(message);
     this.name = 'BadRequestError';
-    this.statusCode = StatusCodes.BAD_REQUEST;
+    this.statusCode = 500;
   }
 }
 

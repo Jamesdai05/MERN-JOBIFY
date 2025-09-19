@@ -16,6 +16,12 @@ const users= [
     password:bcrypt.hashSync("abc123456",10),
     location:"China",
   },
+  {
+    name: "Alice Demo",
+    email: "alice.demo@test.com",
+    password: bcrypt.hashSync("demoPass123",10),
+    location: "Singapore"
+  }
 ]
 
 

@@ -9,7 +9,7 @@ import {
 } from '../controllers/jobsController.js';
 import {idParamsValidator, validator} from "../middleWare/validationMiddleware.js";
 import { idValidator, jobValidator, updateJobValidator } from '../validators/jobValidator.js';
-import { protectRoute } from '../middleWare/authMiddleware.js';
+import { protectRoute, testAccountCheck } from '../middleWare/authMiddleware.js';
 
 
 
@@ -36,28 +36,34 @@ router.get("/:id",protectRoute,idParamsValidator(idValidator),getAJobById)
 // @route  POST /api/jobs/add-job
 // @access User/private
 
-router.post("/add-job",protectRoute,validator(jobValidator),addANewJob)
+router.post("/add-job",protectRoute,testAccountCheck,validator(jobValidator),addANewJob)
 // router.post("/add-job",addANewJob)
 
 // @desc   update a job
 // @route  PUT /api/jobs/edit/:id
 // @access User/private
 
-router.put("/edit/:id",idParamsValidator(idValidator),validator(jobValidator),protectRoute,editAJobById)
+router.put("/edit/:id",idParamsValidator(idValidator),validator(jobValidator),protectRoute,testAccountCheck,editAJobById)
 
 
 // @desc   update a job(partially)
 // @route  PATCH /api/jobs/edit/:id
 // @access User/private
 
-router.patch("/edit/:id",idParamsValidator(idValidator),validator(updateJobValidator),partiallyEditAJobById)
+router.patch(
+    "/edit/:id",
+    idParamsValidator(idValidator),
+    validator(updateJobValidator),
+    protectRoute,
+    testAccountCheck,
+    partiallyEditAJobById)
 
 
 // @desc   remove a job
 // @route  DELETE /api/jobs/delete/:id
 // @access User/private
 
-router.delete("/delete/:id",idParamsValidator(idValidator),protectRoute,deleteAJob)
+router.delete("/delete/:id",idParamsValidator(idValidator),protectRoute,testAccountCheck,deleteAJob)
 
 export default router;
 

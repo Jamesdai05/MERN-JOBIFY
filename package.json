@@ -6,9 +6,10 @@
   "main": "server.js",
   "scripts": {
     "test": "nodemon server.js",
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "client": "cd frontend && npm run dev",
-    "dev": "concurrently --kill-others-on-fail \" npm run start\" \" npm run client\""
+    "dev": "concurrently --kill-others-on-fail \" npm run start\" \" npm run client\"",
+    "mockdata":"node data/dataseed.js -t"
   },
   "keywords": [],
   "author": "",

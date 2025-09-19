@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import User from "../Models/userModel.js";
+import { BadRequestError } from "./errorMiddleware.js";
 
 
 const protectRoute=async(req,res,next)=>{
@@ -33,7 +34,6 @@ const protectRoute=async(req,res,next)=>{
 
 const admin=(req,res,next)=>{
     const role=req.user.role;
-    // console.log(req.user);
     if (!req.user) {
         res.status(401);
         return next(new Error("Unauthorized: No user found in request"));
@@ -47,5 +47,13 @@ const admin=(req,res,next)=>{
     return next(new Error("Authentication required - Please log in as admin!"));
 }
 
+const testAccountCheck=(req,res,next)=>{
+    // console.log("testing testAccount")
+    // console.log(req.user)
+    // to check the user id whether is equal to the id of test user
+    if(String(req.user._id) === "68cbe3e794f0147c717333de") throw new BadRequestError("Demo user,read only!")
+    next()
+}
 
-export {protectRoute,admin}
+
+export {protectRoute,admin,testAccountCheck}
