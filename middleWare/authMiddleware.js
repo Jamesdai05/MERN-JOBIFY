@@ -51,7 +51,7 @@ const testAccountCheck=(req,res,next)=>{
     // console.log("testing testAccount")
     // console.log(req.user)
     // to check the user id whether is equal to the id of test user
-    if(String(req.user._id) === "68cbe3e794f0147c717333de") throw new BadRequestError("Demo user,read only!")
+    if(String(req.user._id) === "68ccf091a248c70493307fcc") throw new BadRequestError("Demo user,read only!")
     next()
 }
 
