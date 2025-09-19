@@ -1,6 +1,7 @@
 // comment the below code since we use the express-async-errors;
 // import asyncHandler from '../middleWare/asyncHandler.js';
 import Job from '../Models/jobModel.js';
+import day from 'dayjs';
 
 
 
@@ -118,37 +119,29 @@ const showStats=async(req,res)=>{
         onGoing: stats["on-going"] || 0
     }
 
-    const monthlyData=await Job.aggregate([
+    let monthlyData=await Job.aggregate([
         {$match:{createdBy:req.user._id}},
         {$group:
             {
                 _id:{
                     year:{$year:'$createdAt'},
-                    month:{$dateToString: { format: "%b", date: "$createdAt" }}
+                    monthNumber: { $month: "$createdAt" }, // for sorting
+                    monthName:{$dateToString: { format: "%b", date: "$createdAt" }} //to convert the number to "Mmm" format
                 },
                 count:{$sum:1},
             },
-        }
+        },
+        {$sort:{"_id.year":-1,"_id.monthNumber":-1}}, //sort the month according to the real number
+        {$limit:6},
     ])
 
-    // const monthlyData=[
-    //     {
-    //         date:"May 25",
-    //         count:45,
-    //     },
-    //     {
-    //         date:"Jun 25",
-    //         count:40,
-    //     },
-    //     {
-    //         date:"Jul 25",
-    //         count:55,
-    //     },
-    //     {
-    //         date:"Aug 25",
-    //         count:60,
-    //     },
-    // ]
+    monthlyData = monthlyData.map(data=>{
+        const {_id:{year,monthName},count}=data
+
+        // to format the month and year
+        const date=day(`${monthName} ${year}`, "MMM YYYY").format("MMM YY")
+        return {date,count}
+    }).reverse()
 
     res.status(200).json({defaultData,monthlyData})
 }
