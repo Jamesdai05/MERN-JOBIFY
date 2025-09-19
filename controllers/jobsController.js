@@ -97,6 +97,63 @@ const deleteAJob=async(req,res)=>{
 }
 
 
+const showStats=async(req,res)=>{
+    // console.log(req.user)
+    let stats=await Job.aggregate([
+        {$match:{createdBy:req.user._id}},
+        {$group:{_id:"$jobStatus",count:{$sum:1}}}
+    ])
+
+    stats=stats.reduce((a,c)=>{
+        const {_id:title,count}=c;
+        a[title]=count
+        return a
+    },{})
+
+    // console.log(stats)
+    const defaultData={
+        pending: stats.pending || 0,
+        interview:stats.interview || 0,
+        declined:stats.declined || 0,
+        onGoing: stats["on-going"] || 0
+    }
+
+    const monthlyData=await Job.aggregate([
+        {$match:{createdBy:req.user._id}},
+        {$group:
+            {
+                _id:{
+                    year:{$year:'$createdAt'},
+                    month:{$dateToString: { format: "%b", date: "$createdAt" }}
+                },
+                count:{$sum:1},
+            },
+        }
+    ])
+
+    // const monthlyData=[
+    //     {
+    //         date:"May 25",
+    //         count:45,
+    //     },
+    //     {
+    //         date:"Jun 25",
+    //         count:40,
+    //     },
+    //     {
+    //         date:"Jul 25",
+    //         count:55,
+    //     },
+    //     {
+    //         date:"Aug 25",
+    //         count:60,
+    //     },
+    // ]
+
+    res.status(200).json({defaultData,monthlyData})
+}
+
+
 export {
     getAllJobs,
     getAJobById,
@@ -104,4 +161,5 @@ export {
     editAJobById,
     deleteAJob,
     partiallyEditAJobById,
+    showStats
 }

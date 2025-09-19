@@ -6,6 +6,7 @@ import {
     editAJobById,
     deleteAJob,
     partiallyEditAJobById,
+    showStats
 } from '../controllers/jobsController.js';
 import {idParamsValidator, validator} from "../middleWare/validationMiddleware.js";
 import { idValidator, jobValidator, updateJobValidator } from '../validators/jobValidator.js';
@@ -23,6 +24,13 @@ const router = express.Router()
 // @access User/private
 
 router.get("/all-jobs",protectRoute,getAllJobs)
+
+
+// @desc   fetch the stats data for the user
+// @route  GET /api/jobs/stats
+// @access User/private
+
+router.get("/stats",protectRoute,showStats)
 
 
 // @desc   fetch single job
@@ -64,6 +72,8 @@ router.patch(
 // @access User/private
 
 router.delete("/delete/:id",idParamsValidator(idValidator),protectRoute,testAccountCheck,deleteAJob)
+
+
 
 export default router;
 
