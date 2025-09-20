@@ -2,19 +2,22 @@ import styled from "styled-components";
 
 
 const Wrapper = styled.section`
-    margin-top:4.5rem;
+    margin-top:4rem;
     text-align:center;
-    background-color:green;
+    border: 1px solid lightblue;
+    overflow:hidden;
 
-    button{
+    .button{
         background: transparent;
         border-color: transparent;
         text-transform: capitalize;
-        color: var(--primary-500);
+        color: var(--secondary-500);
         font-size: 1.25rem;
         cursor: pointer;
+        padding:0.5rem;
     }
-    h3 {
+    h4 {
+        margin-top:0.5rem;
         text-align: center;
         margin-bottom: 0.75rem;
     }
