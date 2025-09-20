@@ -60,7 +60,7 @@ export default function JobsPieChart({data}) {
                         textAlign: "center",
                     }}
                 />
-                <Legend
+                {/* <Legend
                     contentStyle={""}
                     verticalAlign="bottom" // 'top' | 'bottom' | 'left' | 'right'
                     align="center" // 'left' | 'center' | 'right'
@@ -71,7 +71,7 @@ export default function JobsPieChart({data}) {
                         padding:10,
                         background:"#fff",
                     }}
-                />
+                /> */}
             </PieChart>
         </ResponsiveContainer>
     );

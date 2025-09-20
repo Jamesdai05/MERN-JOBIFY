@@ -17,7 +17,7 @@ const Wrapper = styled.section`
         padding:0.5rem;
     }
     h4 {
-        margin-top:0.5rem;
+        margin-top:0.2rem;
         text-align: center;
         margin-bottom: 0.75rem;
     }

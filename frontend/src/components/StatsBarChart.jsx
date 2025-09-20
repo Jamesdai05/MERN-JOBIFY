@@ -58,7 +58,7 @@ const StatsBarChart = ({data}) => {
                 <Bar
                     dataKey="count"
                     fill="#3182ce"
-                    barSize={50}
+                    barSize={80}
                     label={{ fill: "white", fontSize: 16, fontWeight: "bold", position:"centerTop"}}
                 />
             </BarChart>

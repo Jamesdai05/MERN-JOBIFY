@@ -6,8 +6,43 @@ import day from 'dayjs';
 
 
 const getAllJobs=async(req,res)=>{
-   const userId = req.user.id;
-   const jobs = await Job.find({ createdBy: userId });
+    // console.log(req.query)
+    const {search,jobStatus,jobType,sort}=req.query
+    const userId = req.user.id;
+    const searchParams={
+        createdBy:userId,
+   }
+
+   if(search){
+        searchParams.$or=[
+            {$position:{$regex:search,$option:"i"}},
+            {$company:{$regex:search,$option:"i"}},
+        ]
+   }
+   // to set the query of jobType
+   if(jobType && jobType !=="all"){
+        searchParams.jobType=jobType;
+   }
+
+// to set the query of jobStatus
+   if(jobStatus && jobStatus !=="all"){
+        searchParams.jobStatus=jobStatus;
+   }
+
+    const sortOptions = {
+        newest: '-createdAt',
+        oldest: 'createdAt',
+        'A-Z': 'position',
+        'Z-A': '-position',
+        'Ascending by Company': 'company',
+        "Descending by Company":"-company"
+    };
+
+    const sortKey = sortOptions[sort] || sortOptions.newest;
+
+    const limit = Number(req.query.limit) || 20;
+
+   const jobs = await Job.find(searchParams).sort(sortKey).limit(limit);
    return res.json({jobs});
 }
 
