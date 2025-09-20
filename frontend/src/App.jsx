@@ -35,6 +35,7 @@ import { action as deleteJobAction } from "./pages/DeleteJob";
 
 import { loader as adminLoader } from "./pages/Admin/Admin";
 import { action as profileAction } from "./pages/Profile";
+import { loader as statsLoader } from "./components/actions/statsAction.js";
 // checkDefaultTheme();
 
 // fetch("api/test")
@@ -79,6 +80,7 @@ const router = createBrowserRouter([
                     {
                         path: "stats",
                         element: <Stats />,
+                        loader: statsLoader,
                     },
                     {
                         path: "all-jobs",
@@ -88,7 +90,7 @@ const router = createBrowserRouter([
                     {
                         path: "admin",
                         element: <Admin />,
-                        loader:adminLoader,
+                        loader: adminLoader,
                     },
                     {
                         path: "users/profile",
