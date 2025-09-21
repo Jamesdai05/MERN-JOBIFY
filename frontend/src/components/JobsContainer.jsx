@@ -18,7 +18,7 @@ const JobsContainer = () => {
 
     return (
         <Wrapper>
-            <h5>Search Jobs</h5>
+            <h5>{jobs.length} Jobs Found</h5>
             <div className="jobs">
                 {jobs.map((job) => (
                     <JobCard key={job._id} job={job} />

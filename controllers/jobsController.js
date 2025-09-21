@@ -34,16 +34,24 @@ const getAllJobs=async(req,res)=>{
         oldest: 'createdAt',
         'A-Z': 'position',
         'Z-A': '-position',
-        'Ascending by Company': 'company',
-        "Descending by Company":"-company"
+        // 'Ascending': 'company',
+        // "Descending":"-company"
     };
 
     const sortKey = sortOptions[sort] || sortOptions.newest;
 
-    const limit = Number(req.query.limit) || 20;
+    const limit = Number(req.query.limit) || 15;
+    const page = Number(req.query.page) || 1;
+    const skip = (page - 1) * limit; // to skip the first 15 items when fetching
 
-   const jobs = await Job.find(searchParams).sort(sortKey).limit(limit);
-   return res.json({jobs});
+    const totalJobs=await Job.countDocuments(searchParams);
+
+    const totalPages=Math.ceil(totalJobs/limit)
+
+    const jobs = await Job.find(searchParams)
+        .sort(sortKey)
+        .limit(limit);
+    return res.json({totalJobs,jobs,currentPage:page,totalPages});
 }
 
 const getAJobById=async(req,res)=>{

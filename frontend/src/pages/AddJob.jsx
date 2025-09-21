@@ -1,4 +1,4 @@
-import { Form, useOutletContext, redirect } from "react-router-dom"
+import { Form, useOutletContext, redirect, useNavigation } from "react-router-dom"
 import Wrapper from "../components/wrapper/dashboardForm.js";
 import {JOB_TYPE,JOB_STATUS} from "../../../utils/constants.js"
 import axios from "axios";
@@ -33,7 +33,8 @@ export const action=async({request})=>{
 
 const AddJob = () => {
     const {user}=useOutletContext();
-    const isSubmmitting=false;
+    const navigation=useNavigation()
+    const isSubmmitting=navigation.state === "submitting";
 
 
     return (
@@ -91,7 +92,6 @@ const AddJob = () => {
                             className="form-select"
                             name="jobStatus"
                             id="jobStatus"
-                            placeholder="enter the status"
                             defaultValue={JOB_STATUS.PENDING}
                             required
                         >
@@ -112,7 +112,6 @@ const AddJob = () => {
                             className="form-select"
                             name="jobType"
                             id="jobType"
-                            placeholder="enter the type"
                             defaultValue={JOB_TYPE.FULL_TIME}
                             required
                         >
@@ -125,8 +124,8 @@ const AddJob = () => {
                         </select>
                     </div>
                     <div className="submit">
-                        <button type="submit" className="btn btn-block form-btn">
-                            Sumbit
+                        <button type="submit" className="btn btn-block form-btn" disabled={isSubmmitting}>
+                            {isSubmmitting ? "Submitting..." : "Sumbit"}
                         </button>
                     </div>
                 </div>
