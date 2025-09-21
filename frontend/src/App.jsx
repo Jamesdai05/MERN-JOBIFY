@@ -14,8 +14,8 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 import Stats from "./pages/Stats";
-import AdminAllJobs from "./pages/AllJobs";
-import PublicAllJobs from "./pages/AllJobs";
+import AllJobs from "./pages/AllJobs";
+// import PublicAllJobs from "./pages/AllJobs";
 import DashboardLayout from "./pages/DashboardLayout";
 import Admin from "./pages/Admin/Admin";
 import EditJob from "./pages/EditJob";
@@ -25,7 +25,8 @@ import { checkDefaultTheme } from "./theme.js";
 import { action as loginAction } from "./components/actions/loginAction.js";
 
 import { loader as dashboardLoader } from "./components/actions/dashboardLoader.js";
-import { loader as adminAllJobsLoader } from "./pages/AllJobs";
+import {loader as allJobsLoader} from "./components/actions/allJobsLoader.js"
+// import { loader as adminAllJobsLoader } from "./pages/AllJobs";
 // import { loader as publicAllJobsLoader } from "./pages/AllJobs";
 
 import { action as addJobAction } from "./pages/AddJob";
@@ -84,8 +85,8 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "all-jobs",
-                        element: <AdminAllJobs />,
-                        loader: adminAllJobsLoader,
+                        element: <AllJobs />,
+                        loader: allJobsLoader,
                     },
                     {
                         path: "admin",

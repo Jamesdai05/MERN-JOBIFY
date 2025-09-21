@@ -13,12 +13,12 @@ const getAllJobs=async(req,res)=>{
         createdBy:userId,
    }
 
-   if(search){
+    if(search){
         searchParams.$or=[
-            {$position:{$regex:search,$option:"i"}},
-            {$company:{$regex:search,$option:"i"}},
+            {position:{$regex:search,$options:"i"}},
+            {company:{$regex:search,$options:"i"}},
         ]
-   }
+    }
    // to set the query of jobType
    if(jobType && jobType !=="all"){
         searchParams.jobType=jobType;
@@ -32,8 +32,8 @@ const getAllJobs=async(req,res)=>{
     const sortOptions = {
         newest: '-createdAt',
         oldest: 'createdAt',
-        'A-Z': 'position',
-        'Z-A': '-position',
+        Ascending: 'position',
+        Descending: '-position',
         // 'Ascending': 'company',
         // "Descending":"-company"
     };
@@ -50,7 +50,8 @@ const getAllJobs=async(req,res)=>{
 
     const jobs = await Job.find(searchParams)
         .sort(sortKey)
-        .limit(limit);
+        .skip(skip)
+        .limit(limit)
     return res.json({totalJobs,jobs,currentPage:page,totalPages});
 }
 
