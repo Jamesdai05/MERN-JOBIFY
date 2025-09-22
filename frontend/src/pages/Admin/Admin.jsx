@@ -2,22 +2,22 @@ import axios from "axios";
 import { FaSuitcase, FaCalendarCheck } from "react-icons/fa";
 import { BsClipboardDataFill } from "react-icons/bs";
 
-import { useLoaderData,redirect } from "react-router-dom";
-import { toast } from "react-toastify";
+import { useLoaderData} from "react-router-dom";
+// import { toast } from "react-toastify";
 import Wrapper from "../../components/wrapper/statsContainer.js";
 import StatItem from "../../components/StatsItem";
 
-export const loader=async()=>{
-  try {
-    const response=await axios.get("/api/users/admin/stats");
-    console.log(response)
-    return response.data;
-  } catch (err) {
-    toast.error("You are not authorized to view this page!");
-    console.error(err.response?.data?.message)
-    return redirect ("/dashboard")
-  }
-}
+// export const loader=async()=>{
+//   try {
+//     const response=await axios.get("/api/users/admin/stats");
+//     console.log(response)
+//     return response.data;
+//   } catch (err) {
+//     toast.error("You are not authorized to view this page!");
+//     console.error(err.response?.data?.message)
+//     return redirect ("/dashboard")
+//   }
+// }
 
 
 
