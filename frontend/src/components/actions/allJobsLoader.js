@@ -10,8 +10,8 @@ export const loader = async ({request}) => {
         ])
 
         const {data} = await axios.get("/api/jobs/all-jobs",{params});
-        console.log(params)
-        console.log(data)
+        // console.log(params)
+        // console.log(data)
         return {data,searchValues:{...params}}
     } catch (err) {
         toast.error(err.response?.data?.message || "Failed to load jobs");

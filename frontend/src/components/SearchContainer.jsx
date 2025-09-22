@@ -25,6 +25,13 @@ const SearchContainer = () => {
         },1000)
     };
 
+    // const handleReset=(e)=>{
+    //     e.preventDefault();
+    //     const form=new FormData();
+
+    //     submit(form, { method: "get", action: "/dashboard/all-jobs" });
+    // }
+
     return (
         <Wrapper>
             <Form method="get" className="form">
@@ -109,6 +116,7 @@ const SearchContainer = () => {
                         <Link
                             to="/dashboard/all-jobs"
                             className="btn btn-block form-btn"
+                            // onClick={handleReset}
                         >
                             Reset the search
                         </Link>

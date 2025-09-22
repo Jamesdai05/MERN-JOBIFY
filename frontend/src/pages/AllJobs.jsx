@@ -20,8 +20,8 @@ import { createContext, useContext } from "react";
 const AllJobsContext = createContext();
 const AllJobs = () => {
     const { data, searchValues } = useLoaderData();
-    const {jobs}=data
-    const { user } = useOutletContext();
+    // const {jobs,totalJobs,currentPage,totalPages}=data
+    const { user} = useOutletContext();
     // console.log(data);
 
     // if (jobs instanceof Error) {
@@ -29,7 +29,9 @@ const AllJobs = () => {
     // }
 
     return (
-        <AllJobsContext.Provider value={{jobs,searchValues}}>
+        <AllJobsContext.Provider
+            value={{ data, searchValues, }}
+        >
             <SearchContainer />
             <JobsContainer />
         </AllJobsContext.Provider>
