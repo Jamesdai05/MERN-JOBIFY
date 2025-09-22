@@ -12,6 +12,7 @@ const Wrapper = styled.div`
     background: var(--background-secondary-color);
     border-radius: var(--border-radius);
     display: flex;
+    gap:0.2rem;
   }
   .page-btn {
     background: transparent;
@@ -23,6 +24,9 @@ const Wrapper = styled.div`
     color: var(--secondary-500);
     border-radius: var(--border-radius);
     cursor:pointer;
+  }
+  .page-btn:hover{
+    transform:scale(1.15);
   }
   .active{
     background:var(--secondary-500);
