@@ -28,11 +28,16 @@ export const action = async ({ request }) => {
 
     // console.log(data);
     try {
-        await axios.post("/api/auth/register", data, {
+        const response = await axios.post("/api/auth/register", data, {
             withCredentials: true,
         });
+        const user = response.data;
+
+        // Store user data in localStorage (same as login)
+        localStorage.setItem("user", JSON.stringify(user));
+
         toast.success("Registration is successfully!");
-        return redirect("/login");
+        return redirect("/dashboard");
     } catch (err) {
         console.error("Register error:", err.response?.data || err.message);
         console.log(err);

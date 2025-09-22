@@ -69,6 +69,7 @@ export const action = async ({ request }) => {
 
 const Profile = () => {
     const { user } = useOutletContext();
+    console.log(user)
     const { name, email, location } = user;
     const navigation = useNavigation();
 

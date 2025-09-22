@@ -30,7 +30,7 @@ const userSchema=new Schema({
     },
     avatar: {
       type: String,
-      default: "uploads/default.jpg", // Default image path
+      default: "/uploads/default-2.jpg", // Default image path
     },
     avatarId: {
       type: String,

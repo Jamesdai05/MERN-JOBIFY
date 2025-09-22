@@ -20,9 +20,17 @@ const registration=async(req,res)=>{
         password,
         location,
     })
+    console.log(user)
     if(user){
         generationToken(res,user._id)
-        res.status(201).json({user});
+        res.status(201).json({
+            name: user.name,
+            email: user.email,
+            // role: user.role,
+            avatar: user.avatar,
+            id: user._id,
+            location:user.location
+        });
     }
 }
 

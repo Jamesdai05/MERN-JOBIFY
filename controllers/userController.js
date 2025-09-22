@@ -15,7 +15,6 @@ const getUserProfile=async(req,res)=>{
             location:user.location,
             role:user.role,
             avatar:user.avatar,
-            // avatarPublicId:user.avatarPublicId,
         })
     }
 

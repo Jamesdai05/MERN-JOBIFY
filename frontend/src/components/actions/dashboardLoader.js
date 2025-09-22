@@ -13,9 +13,10 @@ export const loader=async()=>{
         localStorage.setItem("user", JSON.stringify(data));
         return {
             name: data.name ?? "User",
-            avatar: data.avatar ?? null,
+            avatar: data.avatar ?? "/uploads/default-2.jpg",
             email: data.email ?? "",
             role: data.role ?? "user",
+            location:data.location,
         };
     } catch (err) {
         const savedUser = localStorage.getItem("user");
