@@ -15,15 +15,15 @@ const Wrapper=styled.div`
         color:var(--white);
     }
     .dropdown {
-    position: absolute;
-    top: 45px;
-    left: 0;
-    width: 100%;
-    box-shadow: var(--shadow-2);
-    text-align: center;
-    visibility: hidden;
-    border-radius: var(--border-radius);
-    background: var(--secondary-500);
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        box-shadow: var(--shadow-2);
+        text-align: center;
+        visibility: hidden;
+        border-radius: var(--border-radius);
+        background: var(--secondary-500);
     }
     .show-dropdown {
         visibility: visible;

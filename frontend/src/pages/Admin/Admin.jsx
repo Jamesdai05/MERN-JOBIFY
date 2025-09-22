@@ -1,5 +1,6 @@
 import axios from "axios";
 import { FaSuitcase, FaCalendarCheck } from "react-icons/fa";
+import { BsClipboardDataFill } from "react-icons/bs";
 
 import { useLoaderData,redirect } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -21,8 +22,9 @@ export const loader=async()=>{
 
 
 const Admin = () => {
-  const {jobCount,userCount}=useLoaderData()
-
+  const data=useLoaderData()
+  console.log(data)
+  const {userCount,jobCount,increasedJobs,increasedUsers} = data
   console.log(userCount,jobCount)
 
   return (
@@ -37,6 +39,20 @@ const Admin = () => {
           <StatItem
               title="total jobs"
               count={jobCount}
+              color="#647acb"
+              bcg="#e0e8f9"
+              icon={<FaCalendarCheck />}
+          />
+          <StatItem
+              title="User count increased in past"
+              count={increasedUsers}
+              color="#9A3F3F"
+              bcg="#fcefc7"
+              icon={<BsClipboardDataFill />}
+          />
+          <StatItem
+              title="Jobs increased"
+              count={increasedJobs}
               color="#647acb"
               bcg="#e0e8f9"
               icon={<FaCalendarCheck />}

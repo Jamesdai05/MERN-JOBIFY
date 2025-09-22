@@ -27,7 +27,24 @@ const getStatistics=async(req,res)=>{
     const jobs=await Job.countDocuments();
     const users=await User.countDocuments();
 
-    res.status(200).json({jobCount:jobs,userCount:users});
+    const now = new Date();
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(now.getDate() - 7);
+
+    const userCount = await User.countDocuments({
+    createdAt: { $gte: sevenDaysAgo }
+    });
+
+    const jobsCount = await Job.countDocuments({
+    createdAt: { $gte: sevenDaysAgo }
+    });
+
+    res.status(200).json({
+        jobCount:jobs,
+        userCount:users,
+        increasedUsers:userCount,
+        increasedJobs:jobsCount
+    });
 }
 
 

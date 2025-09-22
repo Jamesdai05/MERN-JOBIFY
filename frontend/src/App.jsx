@@ -15,28 +15,33 @@ import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 import Stats from "./pages/Stats";
 import AllJobs from "./pages/AllJobs";
-// import PublicAllJobs from "./pages/AllJobs";
+
 import DashboardLayout from "./pages/DashboardLayout";
 import Admin from "./pages/Admin/Admin";
 import EditJob from "./pages/EditJob";
 import { useEffect } from "react";
+
+
+
 import { action as registerAction } from "./components/actions/registerAction.js";
 import { checkDefaultTheme } from "./theme.js";
 import { action as loginAction } from "./components/actions/loginAction.js";
 
 import { loader as dashboardLoader } from "./components/actions/dashboardLoader.js";
 import {loader as allJobsLoader} from "./components/actions/allJobsLoader.js"
-// import { loader as adminAllJobsLoader } from "./pages/AllJobs";
-// import { loader as publicAllJobsLoader } from "./pages/AllJobs";
 
-import { action as addJobAction } from "./pages/AddJob";
-import { loader as editJobLoader } from "./pages/EditJob";
-import { action as editJobAction } from "./pages/EditJob";
+// import { action as addJobAction } from "./pages/AddJob";
+import { action as addJobAction } from "./components/actions/addJobAction.js";
+import {
+    loader as editJobLoader,
+    action as editJobAction,
+} from "./components/actions/editJobAction.js";
 import { action as deleteJobAction } from "./pages/DeleteJob";
 
-import { loader as adminLoader } from "./pages/Admin/Admin";
-import { action as profileAction } from "./pages/Profile";
+import { loader as adminLoader } from "./components/actions/adminStatsLoader.js";
+import { action as profileAction } from "./components/actions/profileAction.js";
 import { loader as statsLoader } from "./components/actions/statsAction.js";
+
 // checkDefaultTheme();
 
 // fetch("api/test")
