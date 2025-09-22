@@ -1,6 +1,6 @@
-import axios from "axios";
-import { useLoaderData, useOutletContext } from "react-router-dom";
-import { toast } from "react-toastify";
+// import axios from "axios";
+// import { toast } from "react-toastify";
+import { useLoaderData} from "react-router-dom";
 import JobsContainer from "../components/JobsContainer.jsx";
 import SearchContainer from "../components/SearchContainer.jsx";
 import { createContext, useContext } from "react";
@@ -21,12 +21,8 @@ const AllJobsContext = createContext();
 const AllJobs = () => {
     const { data, searchValues } = useLoaderData();
     // const {jobs,totalJobs,currentPage,totalPages}=data
-    const { user} = useOutletContext();
-    // console.log(data);
-
-    // if (jobs instanceof Error) {
-    //     return <div>Error loading jobs. Please try again.</div>;
-    // }
+    // const { user} = useOutletContext();
+    // console.log(data,user);
 
     return (
         <AllJobsContext.Provider
