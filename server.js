@@ -71,11 +71,11 @@ app.use("/api/users",userRouter)
 // Single service deployment - serve both API and static files
 if(process.env.NODE_ENV === "production"){
   // Set static folder
-  app.use(express.static(path.join(__dirname, "/frontend/build")));
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
   // Serve React app for all non-API routes
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
   });
 } else {
   app.get("/", (req, res) => {
