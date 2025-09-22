@@ -68,6 +68,22 @@ app.use("/api/auth",authRouter)
 app.use("/api/users",userRouter)
 
 
+// Single service deployment - serve both API and static files
+if(process.env.NODE_ENV === "production"){
+  // Set static folder
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+  // Serve React app for all non-API routes
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running in development mode...");
+  });
+}
+
+
 app.use(notFound)
 app.use(errorHandler)
 
