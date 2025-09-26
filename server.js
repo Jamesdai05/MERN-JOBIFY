@@ -10,6 +10,9 @@ import {notFound,errorHandler} from "./middleWare/errorMiddleware.js";
 import connectDB from "./utils/DBconnect.js";
 import cookieParser from "cookie-parser";
 import { v2 as cloudinary } from 'cloudinary';
+// public
+import path, {dirname} from "path";
+import { fileURLToPath } from "url";
 
 const app=express();
 
@@ -35,11 +38,9 @@ app.use(cors({
   credentials: true,
 }));
 
-// public
-import path, {dirname} from "path";
-import { fileURLToPath } from "url";
 
-const __dirname=dirname(fileURLToPath(import.meta.url))
+
+    const __dirname=dirname(fileURLToPath(import.meta.url))
 
 
 
@@ -69,19 +70,19 @@ app.use("/api/users",userRouter)
 
 
 // Single service deployment - serve both API and static files
-if(process.env.NODE_ENV === "production"){
-  // Set static folder
-  app.use(express.static(path.join(__dirname, "/frontend/dist")));
+    if(process.env.NODE_ENV === "production"){
+    // Set static folder
+    app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
-  // Serve React app for all non-API routes
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-  });
-} else {
-  app.get("/", (req, res) => {
-    res.send("API is running in development mode...");
-  });
-}
+    // Serve React app for all non-API routes
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+    });
+    } else {
+    app.get("/", (req, res) => {
+        res.send("API is running in development mode...");
+    });
+    }
 
 
 app.use(notFound)
