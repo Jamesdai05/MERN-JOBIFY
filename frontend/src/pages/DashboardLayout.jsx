@@ -9,7 +9,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 // const DarkModeEnabled = checkDefaultTheme();
-const DashboardContext = createContext();
+const DashboardContext = createContext();   
 
 const DashboardLayout = () => {
     const data = useLoaderData();
