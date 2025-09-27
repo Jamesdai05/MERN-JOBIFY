@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import About from '../frontend/src/pages/About';
+
 
 
 dotenv.config()
