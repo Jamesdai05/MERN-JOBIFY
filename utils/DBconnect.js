@@ -9,8 +9,8 @@ dotenv.config()
 
 const connectDB=async()=>{
     try {
-        const dbConnect=await mongoose.connect(process.env.MONGODB_URI,{
-            serverSelectionTimeoutMS: 5000, 
+        const dbConnect=await mongoose.connect(process.env.DATABASE_URI,{
+            serverSelectionTimeoutMS: 5000,
         });
         const database=dbConnect.connection
         // console.log(dbConnect.connection)
