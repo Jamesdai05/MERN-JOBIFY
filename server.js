@@ -40,7 +40,7 @@ app.use(cors({
 
 
 
-    const __dirname=dirname(fileURLToPath(import.meta.url))
+const __dirname=dirname(fileURLToPath(import.meta.url))
 
 
 
