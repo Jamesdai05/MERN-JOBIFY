@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import About from '../frontend/src/pages/About';
 
 
 dotenv.config()
@@ -8,9 +9,10 @@ const connectionString=process.env.MONGODB_URI
 
 const connectDB=async()=>{
     try {
-        const dbConnect=await mongoose.connect(connectionString);
+        const dbConnect=await mongoose.connect(connectionString,{serverSelectionTimeoutMS: 5000});
         const database=dbConnect.connection
         // console.log(dbConnect.connection)
+        console.log("Database connected successfully");
         console.log(`connect to mongodb ${database.name} ${database.host}:${database.port}`);
     } catch (error) {
         console.log(`Error:${error.message}`)
