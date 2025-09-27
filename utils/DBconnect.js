@@ -5,11 +5,15 @@ import mongoose from 'mongoose';
 
 dotenv.config()
 
-const connectionString=process.env.MONGODB_URI
+// const connectionString=process.env.MONGODB_URI
 
 const connectDB=async()=>{
     try {
-        const dbConnect=await mongoose.connect(connectionString,{serverSelectionTimeoutMS: 5000});
+        const dbConnect=await mongoose.connect(process.env.MONGODB_URI,{
+            serverSelectionTimeoutMS: 5000,
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
         const database=dbConnect.connection
         // console.log(dbConnect.connection)
         console.log("Database connected successfully");
