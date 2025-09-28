@@ -9,7 +9,8 @@ built using the MERN (MongoDB, Express, React,Nodejs).
 The purpose is to help user to manage the job applications and keep the status in track.
 It is a project that using the MERN stack(with react-router-dom v7) to build the app with admin dashboard.
 
-![intro](./frontend/public/images/5in1.jpg)
+![intro](./frontend/public/Job-app.jpg)
+![Pages](./frontend/public/jobapp.jpg)
 
 ## Technologies applied
 
@@ -41,7 +42,7 @@ The technologies applied in this project are:
 
 ## Project Link
 
-&nbsp;Project is hosted on Render. You can visit it here: [E-Platform on Render](https://e-shop-single-service.onrender.com/)
+&nbsp;Project will be hosted on Render. Under construct.
 
 ## What I have learnt
 
