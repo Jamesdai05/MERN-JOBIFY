@@ -42,7 +42,7 @@ The technologies applied in this project are:
 
 ## Project Link
 
-&nbsp;Project will be hosted on Render. Under construct.
+&nbsp;Project will be hosted on Render.<b>Under construct</b>.
 
 ## What I have learnt
 
