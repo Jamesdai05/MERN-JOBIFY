@@ -18,7 +18,7 @@ The technologies applied in this project are:
 
 -   ⠀MERN (MongoDB,Express,NodeJs,React)
 -   ⠀Redux Query(Tanstack query)
--   ⠀styled-component
+-   ⠀Styled-component
 
 ## Features
 
