@@ -42,7 +42,7 @@ The technologies applied in this project are:
 
 ## Project Link
 
-&nbsp;Project will be hosted on Render.The link of project demo: [weblink](https://job-tracking-idhm.onrender.com/dashboard).
+&nbsp;Project will be hosted on Render.The link of project demo: [weblink](https://job-tracking-idhm.onrender.com).
 
 ## What I have learnt
 
