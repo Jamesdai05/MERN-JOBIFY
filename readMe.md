@@ -50,7 +50,7 @@ The technologies applied in this project are:
 
 &nbsp; React & Reduxtoolkit / Query state management
 
-&nbsp; Data Query with MOGODB
+&nbsp; Data Query with Mongodb
 
 &nbsp; Data model design
 
