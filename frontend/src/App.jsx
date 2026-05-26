@@ -42,12 +42,6 @@ import { loader as adminLoader } from "./components/actions/adminStatsLoader.js"
 import { action as profileAction } from "./components/actions/profileAction.js";
 import { loader as statsLoader } from "./components/actions/statsAction.js";
 
-// checkDefaultTheme();
-
-// fetch("api/test")
-//   .then(res=>res.json())
-//   .then(data=>console.log(data))
-
 const router = createBrowserRouter([
     {
         path: "/",
@@ -68,11 +62,6 @@ const router = createBrowserRouter([
                 element: <Login />,
                 action: loginAction,
             },
-            // {
-            //     path: "all-jobs",
-            //     element: <PublicAllJobs />,
-            //     loader: publicAllJobsLoader,
-            // },
             {
                 path: "dashboard",
                 loader: dashboardLoader,
@@ -112,6 +101,7 @@ const router = createBrowserRouter([
                     {
                         path: "delete/:id",
                         action: deleteJobAction,
+                        // no element is needed
                     },
                 ],
             },
